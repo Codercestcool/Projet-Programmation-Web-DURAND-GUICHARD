@@ -1,6 +1,8 @@
 *, *::before, *::after {
     box-sizing: border-box;
 }
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+
 body {
     font-family: Arial, sans-serif;
     margin: 0;
@@ -64,7 +66,9 @@ nav a {
     margin-right: 15px;
     text-decoration: none;
     color: white;
-    font-weight: bold;
+    font-weight: 600;
+    font-family: 'Poppins', sans-serif;
+    letter-spacing: 0.03em;
 }
 nav a:hover {
     color: #66ccff;
@@ -90,7 +94,9 @@ main h1 {
     font-size: 3.5em;
     color: white;
     margin-bottom: 30px;
-    font-weight: bold;
+    font-weight: 700;
+    font-family: 'Poppins', sans-serif;
+    letter-spacing: -0.03em;
     text-shadow: 0 4px 20px rgba(0,0,0,0.5);
 }
 .cta-button {
