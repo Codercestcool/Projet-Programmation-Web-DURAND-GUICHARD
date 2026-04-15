@@ -163,7 +163,8 @@ main {
     position: relative;
     z-index: 1;
 }
-header {
+header,
+.site-header {
     background: rgba(10, 49, 108, 0.42);
     border: none;
     backdrop-filter: blur(10px);
@@ -242,8 +243,110 @@ main h1 {
     background-color: #062147;
 }
 footer {
-    text-align: center;
-    margin-top: 20px;
+    background-color: #051438;
     color: #ffffff;
+    padding: 32px 20px 18px;
+    margin-top: 60px;
     font-size: 14px;
+}
+
+.footer-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    max-width: 1200px;
+    margin: 0 auto 23px;
+    gap: 28px;
+}
+
+.footer-section {
+    display: flex;
+    flex-direction: column;
+}
+
+.footer-section:first-child {
+    margin-right: 60px;
+}
+
+.footer-section:nth-child(3) {
+    margin-left: -35px;
+}
+
+.footer-section h4 {
+    margin: 0 0 11px;
+    font-size: 1.1em;
+    font-weight: 700;
+    color: #81ECEC;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+}
+
+.footer-logo {
+    height: 100px;
+    width: auto;
+    object-fit: contain;
+    filter: brightness(0) invert(1);
+    margin-bottom: 10px;
+}
+
+.footer-section ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer-section ul li {
+    margin-bottom: 7px;
+}
+
+.footer-section ul li a {
+    color: #d6e7ff;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.footer-section ul li a:hover {
+    color: #81ECEC;
+}
+
+.footer-section p {
+    margin: 8px 0;
+    color: #d6e7ff;
+    line-height: 1.6;
+}
+
+.social-links {
+    display: flex;
+    gap: 15px;
+}
+
+.social-links a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    background: rgba(129, 236, 236, 0.15);
+    border: 1px solid rgba(129, 236, 236, 0.4);
+    border-radius: 50%;
+    color: #81ECEC;
+    text-decoration: none;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+    font-weight: 600;
+    font-size: 0.9em;
+}
+
+.social-links a:hover {
+    background: rgba(129, 236, 236, 0.3);
+    border-color: #81ECEC;
+}
+
+.footer-bottom {
+    text-align: center;
+    padding-top: 18px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    color: #9aa8c5;
+}
+
+.footer-bottom p {
+    margin: 0;
 }
