@@ -10,23 +10,79 @@
     <section class="hero-section">
         <header>
             <nav class="header-nav">
-                <img src="../data/LOGO_EFREI-PRINT_EFREI-WEB.png" alt="Logo EFREI" class="logo">
-                <a href="#accueil">Accueil</a>
-                <a href="#formations">Formations</a>
-                <a href="#equipe">Équipe</a>
-                <a href="#vie-etudiante">Vie étudiante</a>
-                <a href="#contact">Contact</a>
+                <a class="logo-link" href="accueil.html">
+                    <img src="../data/LOGO_EFREI-PRINT_EFREI-WEB.png" alt="Logo EFREI" class="logo">
+                </a>
+                <a href="accueil.html">Accueil</a>
+                <a href="formations.html">Formations</a>
+                <a href="equipe.html">Équipe</a>
+                <a href="vie-etudiante.html">Vie étudiante</a>
             </nav>
         </header>
-        
+
         <main>
             <h1>Former les experts du numérique</h1>
-            <button class="cta-button">Découvrir les formations</button>
+            <a href="formations.html" class="cta-button">Découvrir les formations</a>
         </main>
+    </section>
+
+    <section class="stats-section" id="chiffres-cles">
+        <p class="section-subtitle">CHIFFRES CLÉS</p>
+        <div class="stats-grid">
+            <article class="stat-card">
+                <h2>98%</h2>
+                <p>insertion professionnelle</p>
+            </article>
+            <article class="stat-card">
+                <h2>4600</h2>
+                <p>étudiants</p>
+            </article>
+            <article class="stat-card">
+                <h2>+1500</h2>
+                <p>entreprises partenaires</p>
+            </article>
+        </div>
+    </section>
+
+    <section class="quick-section">
+        <p class="section-subtitle">Explorer le département</p>
+        <div class="quick-grid">
+            <a class="quick-card" href="formations.html" data-overlay-text="Découvrir">
+                <div class="quick-card-media">
+                    <img src="../data/Efrei-formations.jpg" alt="Formations">
+                </div>
+                <div class="quick-card-overlay"></div>
+                <div class="quick-card-content">
+                    <h3>Formations</h3>
+                    <p>Découvrez nos programmes en informatique, du Bachelor au cycle ingénieur.</p>
+                </div>
+            </a>
+            <a class="quick-card" href="equipe.html" data-overlay-text="Voir l'équipe">
+                <div class="quick-card-media">
+                    <img src="../data/Efrei-equipe.jpg" alt="Équipe enseignante">
+                </div>
+                <div class="quick-card-overlay"></div>
+                <div class="quick-card-content">
+                    <h3>Équipe enseignante</h3>
+                    <p>Rencontrez nos enseignants et experts du numérique.</p>
+                </div>
+            </a>
+            <a class="quick-card" href="vie-etudiante.html" data-overlay-text="Explorer">
+                <div class="quick-card-media">
+                    <img src="../data/Efrei-vie-etudiante.jpg" alt="Vie étudiante">
+                </div>
+                <div class="quick-card-overlay"></div>
+                <div class="quick-card-content">
+                    <h3>Vie étudiante</h3>
+                    <p>Explorez les clubs, projets et la vie sur le campus.</p>
+                </div>
+            </a>
+        </div>
     </section>
     
     <footer>
         <p>&copy; 2026 - DURAND Gabriel - GUICHARD Louis</p>
     </footer>
+    <script src="../js/quickCards.js"></script>
 </body>
 </html>

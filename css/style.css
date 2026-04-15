@@ -4,12 +4,136 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
 
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Poppins', Arial, sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #163767;
+    background-color: #0A316C;
     min-height: 100vh;
     overflow-x: hidden;
+}
+.stats-section {
+    padding: 40px 20px 60px;
+    max-width: 1200px;
+    margin: 0 auto;
+    color: #ffffff;
+}
+.section-subtitle {
+    margin: 0 0 30px;
+    font-size: 1.2em;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    color: #81ECEC;
+    text-transform: uppercase;
+}
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 24px;
+}
+.quick-section {
+    padding: 40px 20px 60px;
+    max-width: 1200px;
+    margin: 0 auto;
+    color: #ffffff;
+}
+.quick-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 24px;
+}
+.quick-card {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 18px;
+    padding: 0;
+    text-decoration: none;
+    color: #ffffff;
+    overflow: hidden;
+    transition: transform 0.3s ease, border-color 0.3s ease, background-color 0.3s ease;
+}
+.quick-card:hover {
+    transform: translateY(-6px);
+    border-color: rgba(129, 236, 236, 0.6);
+    background: rgba(255, 255, 255, 0.12);
+}
+.quick-card-media {
+    width: 100%;
+    min-height: 210px;
+    background: linear-gradient(145deg, rgba(129, 236, 236, 0.1), rgba(255, 255, 255, 0.04));
+}
+.quick-card img,
+.quick-card-media img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+}
+.quick-card-content {
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 160px;
+}
+.quick-card h3 {
+    margin: 0 0 10px;
+    font-size: 1.8rem;
+}
+.quick-card p {
+    margin: 0;
+    color: #d6e7ff;
+    font-size: 1em;
+    line-height: 1.7;
+}
+.quick-card-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(10, 49, 108, 0.75);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: #ffffff;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: 5;
+    pointer-events: none;
+}
+.quick-card-overlay.active {
+    opacity: 1;
+}
+.stat-card {
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 18px;
+    padding: 28px 24px;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 18px 40px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease, border-color 0.3s ease;
+}
+.stat-card:hover {
+    transform: translateY(-6px);
+    border-color: rgba(129, 236, 236, 0.6);
+}
+.stat-card h2 {
+    margin: 0 0 12px;
+    font-size: 4rem;
+    color: #ffffff;
+    letter-spacing: -0.04em;
+    font-weight: 800;
+}
+.stat-card p {
+    margin: 0;
+    color: #d6e7ff;
+    font-size: 1.05em;
+    line-height: 1.5;
 }
 .hero-section {
     position: relative;
@@ -17,7 +141,7 @@ body {
     flex-direction: column;
     justify-content: space-between;
     min-height: 80vh;
-    background: url('../data/ecole-ingenieur-generaliste-paris-efrei-scaled-1-1280x720.jpg') no-repeat center/cover;
+    background: url('../data/Efrei-campus.jpg') no-repeat center/cover;
     background-attachment: fixed;
     padding: 30px 20px 40px;
     border-radius: 0;
@@ -31,7 +155,7 @@ body {
     content: '';
     position: absolute;
     inset: 0;
-    background: linear-gradient(180deg, rgba(22, 55, 103, 0.65) 0%, rgba(22, 55, 103, 0.35) 40%, rgba(255, 255, 255, 0.05) 100%);
+    background: linear-gradient(180deg, rgba(10, 49, 108, 0.65) 0%, rgba(10, 49, 108, 0.35) 40%, rgba(255, 255, 255, 0.05) 100%);
     z-index: 0;
 }
 header,
@@ -40,13 +164,14 @@ main {
     z-index: 1;
 }
 header {
-    background: rgba(22, 55, 103, 0.42);
-    border: 1px solid rgba(22, 55, 103, 0.9);
+    background: rgba(10, 49, 108, 0.42);
+    border: none;
     backdrop-filter: blur(10px);
-    color: white;
+    color: #ffffff;
     padding: 20px 20px 20px 40px;
     text-align: center;
-    border-radius: 0 0 0 0;
+    border-radius: 18px;
+    font-family: 'Poppins', sans-serif;
 }
 .header-nav {
     display: flex;
@@ -65,13 +190,13 @@ nav {
 nav a {
     margin-right: 15px;
     text-decoration: none;
-    color: white;
+    color: #ffffff;
     font-weight: 600;
     font-family: 'Poppins', sans-serif;
     letter-spacing: 0.03em;
 }
 nav a:hover {
-    color: #66ccff;
+    color: #81ECEC;
 }
 main {
     text-align: left;
@@ -92,7 +217,7 @@ main {
 }
 main h1 {
     font-size: 3.5em;
-    color: white;
+    color: #ffffff;
     margin-bottom: 30px;
     font-weight: 700;
     font-family: 'Poppins', sans-serif;
@@ -100,22 +225,25 @@ main h1 {
     text-shadow: 0 4px 20px rgba(0,0,0,0.5);
 }
 .cta-button {
-    background-color: #163767;
-    color: white;
+    display: inline-block;
+    background-color: #0A316C;
+    color: #ffffff;
     padding: 15px 30px;
     border: none;
     border-radius: 5px;
     font-size: 1.2em;
     font-weight: bold;
+    font-family: 'Poppins', sans-serif;
+    text-decoration: none;
     cursor: pointer;
     transition: background-color 0.3s;
 }
 .cta-button:hover {
-    background-color: #0d2a4d;
+    background-color: #062147;
 }
 footer {
     text-align: center;
     margin-top: 20px;
-    color: white;
+    color: #ffffff;
     font-size: 14px;
 }
