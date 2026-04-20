@@ -1,5 +1,6 @@
 document.addEventListener('DOMContentLoaded', function() {
     const quickCards = document.querySelectorAll('.quick-card');
+    const homePage = document.body.classList.contains('accueil-page');
     
     quickCards.forEach(card => {
         let hoverTimeout;
@@ -18,4 +19,13 @@ document.addEventListener('DOMContentLoaded', function() {
             overlay.classList.remove('active');
         });
     });
+
+    if (homePage) {
+        const updateHeaderState = function() {
+            document.body.classList.toggle('is-scrolled', window.scrollY > 0);
+        };
+
+        updateHeaderState();
+        window.addEventListener('scroll', updateHeaderState, { passive: true });
+    }
 });
