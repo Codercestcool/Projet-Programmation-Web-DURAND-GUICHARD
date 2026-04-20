@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vie étudiante</title>
+    <title>Quiz d'orientation</title>
     <link rel="stylesheet" href="../css/style.css">
 </head>
-<body>
+<body class="quiz-page">
     <header class="site-header">
         <nav class="header-nav">
             <a class="logo-link" href="accueil.html">
@@ -20,10 +20,48 @@
         </nav>
     </header>
 
-    <main class="page-content">
-        <h1>Vie étudiante</h1>
-        <p>Page en construction. Cette section présentera bientôt la vie étudiante et les activités.</p>
-        <a class="back-link" href="accueil.html">Retour à l'accueil</a>
+    <main class="page-content quiz-content">
+        <section class="quiz-hero">
+            <p class="section-subtitle">QUIZ D'ORIENTATION</p>
+            <h1>Quel parcours informatique vous correspond ?</h1>
+            <p>
+                Répondez à quelques questions rapides pour découvrir si votre profil
+                colle davantage au Bachelor, au cycle ingénieur ou à une spécialisation.
+            </p>
+        </section>
+
+        <section class="quiz-panel">
+            <div class="quiz-topbar">
+                <div>
+                    <p class="quiz-kicker">Progression</p>
+                    <div class="quiz-progress" aria-label="Progression du quiz">
+                        <div class="quiz-progress-bar" id="quiz-progress-bar"></div>
+                    </div>
+                </div>
+                <p class="quiz-counter" id="quiz-counter">Question 1 / 5</p>
+            </div>
+
+            <article class="quiz-card" id="quiz-card">
+                <h2 id="quiz-question">Question</h2>
+                <p class="quiz-help" id="quiz-help">Choisissez la réponse qui vous ressemble le plus.</p>
+                <div class="quiz-options" id="quiz-options"></div>
+                <div class="quiz-actions">
+                    <button class="quiz-button ghost" id="quiz-restart" type="button">Recommencer</button>
+                    <button class="quiz-button" id="quiz-next" type="button" disabled>Suivant</button>
+                </div>
+            </article>
+
+            <article class="quiz-result" id="quiz-result" hidden>
+                <p class="quiz-result-label">Résultat</p>
+                <h2 id="quiz-result-title">Votre parcours recommandé</h2>
+                <p id="quiz-result-text"></p>
+                <ul id="quiz-result-points"></ul>
+                <div class="quiz-actions">
+                    <button class="quiz-button ghost" id="quiz-again" type="button">Refaire le quiz</button>
+                    <a class="quiz-button" href="formations.html">Voir les formations</a>
+                </div>
+            </article>
+        </section>
     </main>
 
     <footer>
@@ -61,5 +99,6 @@
             <p>&copy; 2026 - DURAND Gabriel - GUICHARD Louis</p>
         </div>
     </footer>
+    <script src="../js/quiz.js"></script>
 </body>
 </html>
