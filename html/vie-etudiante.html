@@ -5,8 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Vie étudiante</title>
     <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
-<body>
+<body class="student-life-page">
     <header class="site-header">
         <nav class="header-nav">
             <a class="logo-link" href="accueil.html">
@@ -14,16 +15,258 @@
             </a>
             <a href="accueil.html">Accueil</a>
             <a href="formations.html">Formations</a>
-            <a href="quiz.html">Quiz</a>
             <a href="equipe.html">Équipe</a>
             <a href="vie-etudiante.html">Vie étudiante</a>
+            <a href="quiz.html">Quiz</a>
+            <a href="contact.html">Contact</a>
         </nav>
     </header>
 
-    <main class="page-content">
-        <h1>Vie étudiante</h1>
-        <p>Page en construction. Cette section présentera bientôt la vie étudiante et les activités.</p>
-        <a class="back-link" href="accueil.html">Retour à l'accueil</a>
+    <main class="page-content student-life-content">
+        <section class="student-hero">
+            <p class="section-subtitle">VIE ÉTUDIANTE</p>
+            <h1>La vie à EFREI</h1>
+            <p>
+                Bien plus qu'une école d'informatique ! Découvrez le campus, les clubs, les associations,
+                et les événements qui font la richesse de la vie étudiante à EFREI.
+            </p>
+        </section>
+
+        <!-- Campus -->
+        <section class="student-section">
+            <h2>Notre campus</h2>
+            <p>
+                Le campus de Villejuif offre des infrastructures modernes pour apprendre et se développer :
+                salles de classe équipées, laboratoires informatiques, salles de réunion, espace détente,
+                restauration sur place et bien d'autres aménagements pour le bien-être des étudiants.
+            </p>
+            <div class="facilities-grid">
+                <article class="facility-card">
+                    <div class="facility-icon">🏢</div>
+                    <h3>Bâtiments modernes</h3>
+                    <p>Infrastructure nouvelle et accueillante</p>
+                </article>
+                <article class="facility-card">
+                    <div class="facility-icon">💻</div>
+                    <h3>Salles informatiques</h3>
+                    <p>Équipement état de l'art</p>
+                </article>
+                <article class="facility-card">
+                    <div class="facility-icon">🍽️</div>
+                    <h3>Cafétéria</h3>
+                    <p>Restauration variée et abordable</p>
+                </article>
+                <article class="facility-card">
+                    <div class="facility-icon">📚</div>
+                    <h3>Bibliothèque</h3>
+                    <p>Ressources documentaires complètes</p>
+                </article>
+            </div>
+        </section>
+
+        <section class="quick-section">
+            <p class="section-subtitle">Vie étudiante en images</p>
+            <div class="quick-grid">
+                <article class="quick-card">
+                    <div class="quick-card-media">
+                        <img src="../data/Efrei-vie-etudiante.jpg" alt="Vie étudiante EFREI sur le campus">
+                    </div>
+                    <div class="quick-card-content">
+                        <h3>Clubs et événements</h3>
+                        <p>Des photos du campus et de la vie associative pour illustrer les moments forts de l'année.</p>
+                    </div>
+                </article>
+                <article class="quick-card">
+                    <div class="quick-card-media">
+                        <img src="../data/efrei-etudiants-lab.jpg" alt="Espaces modernes pour la vie étudiante EFREI">
+                    </div>
+                    <div class="quick-card-content">
+                        <h3>Espaces modernes</h3>
+                        <p>Des lieux pensés pour se retrouver, collaborer et organiser des activités étudiantes.</p>
+                    </div>
+                </article>
+                <article class="quick-card">
+                    <div class="quick-card-media">
+                        <img src="../data/efrei-campus-life.jpg" alt="Ambiance campus EFREI et association photo">
+                    </div>
+                    <div class="quick-card-content">
+                        <h3>Ambiance campus</h3>
+                        <p>Une vue d'ensemble des espaces de vie et des activités qui rythment le quotidien.</p>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <!-- Associations et clubs -->
+        <section class="student-section">
+            <h2>Plus de 60 associations et clubs</h2>
+            <p>
+                EFREI offre une vie associative très riche avec plus de 60 clubs et associations
+                couvrant diverses thématiques : technologie, sport, culture, entrepreneuriat, etc.
+            </p>
+
+            <div class="clubs-showcase">
+                <article class="club-category">
+                    <h3>🚀 Clubs technologiques</h3>
+                    <ul>
+                        <li>Club Dev Web</li>
+                        <li>Club AI & Machine Learning</li>
+                        <li>Club Cybersécurité</li>
+                        <li>Club Blockchain</li>
+                        <li>Club IoT & Robotique</li>
+                        <li>Club Game Dev</li>
+                        <li>Club Mobile</li>
+                        <li>Club Cloud & DevOps</li>
+                    </ul>
+                </article>
+
+                <article class="club-category">
+                    <h3>⚽ Clubs sportifs</h3>
+                    <ul>
+                        <li>Football</li>
+                        <li>Basketball</li>
+                        <li>Tennis</li>
+                        <li>Volley-ball</li>
+                        <li>Badminton</li>
+                        <li>Escalade</li>
+                        <li>Yoga</li>
+                        <li>Musculation</li>
+                        <li>Running</li>
+                    </ul>
+                </article>
+
+                <article class="club-category">
+                    <h3>🎭 Clubs culturels</h3>
+                    <ul>
+                        <li>Cinéma</li>
+                        <li>Musique</li>
+                        <li>Théâtre</li>
+                        <li>Danse</li>
+                        <li>Photographie</li>
+                        <li>Arts plastiques</li>
+                        <li>Manga & Anime</li>
+                        <li>Jeux de rôle</li>
+                    </ul>
+                </article>
+
+                <article class="club-category">
+                    <h3>💼 Clubs entrepreneurship</h3>
+                    <ul>
+                        <li>Startup Club</li>
+                        <li>BDE (Bureau des Étudiants)</li>
+                        <li>Junior Entreprise</li>
+                        <li>Entrepreneuriat social</li>
+                        <li>Innovation Lab</li>
+                        <li>Consulting Club</li>
+                        <li>Finance & Trading</li>
+                    </ul>
+                </article>
+
+                <article class="club-category">
+                    <h3>🌍 Clubs humanitaires &amp; sociaux</h3>
+                    <ul>
+                        <li>Solidarité Internationale</li>
+                        <li>Éco-Campus</li>
+                        <li>Diversité &amp; Inclusion</li>
+                        <li>Bénévolat Local</li>
+                        <li>Santé Mentale</li>
+                        <li>Développement Durable</li>
+                    </ul>
+                </article>
+
+                <article class="club-category">
+                    <h3>📚 Clubs académiques</h3>
+                    <ul>
+                        <li>Club Scientifique</li>
+                        <li>Club Mathématiques</li>
+                        <li>Club Physique</li>
+                        <li>Club Débats</li>
+                        <li>Club Langues</li>
+                        <li>Club Écriture</li>
+                        <li>Club Réseau</li>
+                    </ul>
+                </article>
+            </div>
+        </section>
+
+        <section class="student-section">
+            <h2>Photo et mémoire du campus</h2>
+            <p>
+                Efrei Picture Studio valorise les événements étudiants et associatifs du campus. Cette page rassemble un aperçu visuel de cette énergie, tout en gardant la navigation simple et rapide.
+            </p>
+            <p>
+                Pour découvrir davantage d'images, vous pouvez consulter le site d' <a href="https://efreipicturestudio.fr/" target="_blank" rel="noopener noreferrer">Efrei Picture Studio</a>.
+            </p>
+        </section>
+
+        <!-- Projets étudiants -->
+        <section class="student-section">
+            <h2>Projets étudiants</h2>
+            <p>
+                Les étudiants d'EFREI travaillent sur des projets innovants et concrets,
+                en équipe, du Bachelor au cycle ingénieur.
+            </p>
+            <div class="projects-grid">
+                <article class="project-card">
+                    <div class="project-icon">🤖</div>
+                    <h3>Projets technologiques</h3>
+                    <p>Développement d'applications, objets connectés, IA et data science</p>
+                </article>
+                <article class="project-card">
+                    <div class="project-icon">🏗️</div>
+                    <h3>Projets de groupe</h3>
+                    <p>Travail en équipe, gestion de projet, présentation et défense</p>
+                </article>
+                <article class="project-card">
+                    <div class="project-icon">🚀</div>
+                    <h3>Hackathons</h3>
+                    <p>Compétitions 24h ou 48h pour créer et innover rapidement</p>
+                </article>
+                <article class="project-card">
+                    <div class="project-icon">📊</div>
+                    <h3>Stages &amp; alternances</h3>
+                    <p>Expérience en entreprise pour développer les compétences pratiques</p>
+                </article>
+            </div>
+        </section>
+
+        <!-- Événements -->
+        <section class="student-section">
+            <h2>Événements &amp; Vie associative</h2>
+            <div class="events-grid">
+                <article class="event-card">
+                    <h3>🎉 Intégration</h3>
+                    <p>Week-end d'intégration pour les nouveaux étudiants, team building et première découverte du groupe</p>
+                </article>
+                <article class="event-card">
+                    <h3>🎤 Conférences</h3>
+                    <p>Conférences régulières avec des experts du secteur technologique et industriel</p>
+                </article>
+                <article class="event-card">
+                    <h3>🎮 Compétitions</h3>
+                    <p>Challenges informatiques, compétitions sportives et jeux inter-promotions</p>
+                </article>
+                <article class="event-card">
+                    <h3>🎨 Festival étudiant</h3>
+                    <p>Festival annuel regroupant les clubs et associations pour une journée de partage</p>
+                </article>
+                <article class="event-card">
+                    <h3>💻 Forum carrière</h3>
+                    <p>Rencontre avec les entreprises partenaires et opportunités de stage/alternance</p>
+                </article>
+                <article class="event-card">
+                    <h3>🌟 Gala</h3>
+                    <p>Soirée festive et formelle pour célébrer les promotions sortantes</p>
+                </article>
+            </div>
+        </section>
+
+        <section class="student-cta">
+            <h2>Rejoignez-nous !</h2>
+            <p>Envie d'une formation d'excellence dans une communauté vivante et dynamique ?</p>
+            <a class="cta-button" href="contact.html">Nous contacter</a>
+            <a class="cta-button ghost" href="formations.html">Découvrir les formations</a>
+        </section>
     </main>
 
     <footer>
@@ -36,24 +279,25 @@
                 <ul>
                     <li><a href="accueil.html">Accueil</a></li>
                     <li><a href="formations.html">Formations</a></li>
-                    <li><a href="quiz.html">Quiz</a></li>
                     <li><a href="equipe.html">Équipe</a></li>
                     <li><a href="vie-etudiante.html">Vie étudiante</a></li>
+                    <li><a href="quiz.html">Quiz</a></li>
+                    <li><a href="contact.html">Contact</a></li>
                 </ul>
             </div>
             <div class="footer-section">
                 <h4>Contact</h4>
-                <p>Email: contact@efrei.fr</p>
-                <p>Téléphone: +33 1 XX XX XX XX</p>
-                <p>Adresse: Campus EFREI, Villejuif</p>
+                <p>Email: <a href="mailto:admissions@efrei.fr">admissions@efrei.fr</a></p>
+                <p>Téléphone: <a href="tel:+33188289001">+33 1 88 28 90 01</a></p>
+                <p>Adresse: 30-32 avenue de la République, 94800 Villejuif</p>
             </div>
             <div class="footer-section">
                 <h4>Réseaux sociaux</h4>
                 <div class="social-links">
-                    <a href="#" title="Facebook">f</a>
-                    <a href="#" title="Twitter">Tw</a>
-                    <a href="#" title="LinkedIn">in</a>
-                    <a href="#" title="Instagram">📷</a>
+                    <a href="https://www.facebook.com/EfreiParis" target="_blank"><i class="fab fa-facebook"></i></a>
+                    <a href="https://twitter.com/efrei_paris" target="_blank"><i class="fab fa-twitter"></i></a>
+                    <a href="https://www.linkedin.com/school/efrei/" target="_blank"><i class="fab fa-linkedin"></i></a>
+                    <a href="https://www.instagram.com/efrei_paris/" target="_blank"><i class="fab fa-instagram"></i></a>
                 </div>
             </div>
         </div>
@@ -61,5 +305,28 @@
             <p>&copy; 2026 - DURAND Gabriel - GUICHARD Louis</p>
         </div>
     </footer>
+
+    <!-- Chatbot -->
+    <button id="chatbot-bubble" title="Assistant EFREI">💬</button>
+    <div id="chatbot-container">
+        <div class="chatbot-header">
+            <h3>Assistant EFREI</h3>
+            <button id="chatbot-close">&times;</button>
+        </div>
+        <div id="chatbot-messages"></div>
+        <div class="chatbot-quick-buttons">
+            <button class="chatbot-quick-btn" data-question="Parlez-moi des formations">Formations</button>
+            <button class="chatbot-quick-btn" data-question="Qui sont les enseignants ?">Équipe</button>
+            <button class="chatbot-quick-btn" data-question="Quelle est la vie étudiante ?">Vie étudiante</button>
+            <button class="chatbot-quick-btn" data-question="Comment vous contacter ?">Contact</button>
+            <button class="chatbot-quick-btn" data-question="Y a-t-il un quiz ?">Quiz</button>
+        </div>
+        <form id="chatbot-form">
+            <input type="text" id="chatbot-input" placeholder="Votre question..." required>
+            <button type="submit" class="chatbot-send-btn">→</button>
+        </form>
+    </div>
+
+    <script src="../js/chatbot.js"></script>
 </body>
 </html>

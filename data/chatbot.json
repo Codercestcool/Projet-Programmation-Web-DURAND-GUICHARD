@@ -1,0 +1,29 @@
+{
+  "formations": {
+    "keywords": ["formation", "formations", "bachelor", "ingénieur", "cycle ingénieur", "spécialisation", "programme", "cursus", "diplôme"],
+    "answer": "La page Formations présente le Bachelor Informatique, le cycle ingénieur et les spécialisations comme la cybersécurité, la data, l'IA et le développement web. Chaque programme offre des compétences pratiques et théoriques alignées avec l'industrie."
+  },
+  "equipe": {
+    "keywords": ["équipe", "enseignant", "prof", "professeur", "intervenant", "responsable", "personnel", "staff"],
+    "answer": "La page Équipe présente les enseignants, intervenants et responsables pédagogiques du département informatique. Nous avons des experts en développement web, cybersécurité, data science, et bien d'autres domaines."
+  },
+  "vie_etudiante": {
+    "keywords": ["vie étudiante", "club", "clubs", "association", "associations", "campus", "projet étudiant", "événement", "activité", "vie campus"],
+    "answer": "La page Vie étudiante présente le campus, les plus de 60 associations et clubs, les événements et les projets étudiants. Vous y découvrirez les clubs tech, sportifs, culturels, entrepreneurship et bien plus !"
+  },
+  "contact": {
+    "keywords": ["contact", "adresse", "email", "mail", "téléphone", "villejuif", "lieu", "coordonnées", "nous contacter"],
+    "answer": "Vous pouvez contacter EFREI à l'adresse 30-32 avenue de la République, 94800 Villejuif. Téléphone: +33 1 88 28 90 01. Email: admissions@efrei.fr. Vous pouvez aussi remplir le formulaire de contact sur la page Contact."
+  },
+  "quiz": {
+    "keywords": ["quiz", "question", "jeu", "javascript", "test", "orientation", "parcours"],
+    "answer": "La page Quiz propose une activité interactive en JavaScript pour découvrir quel parcours informatique vous correspond le mieux. Testez vos préférences et trouvez votre formation idéale !"
+  },
+  "accueil": {
+    "keywords": ["accueil", "bienvenue", "accueil", "présentation", "page d'accueil", "home"],
+    "answer": "Bienvenue sur le site d'EFREI ! Découvrez nos formations, notre équipe, la vie étudiante et bien plus. N'hésitez pas à explorer les différentes pages du site."
+  },
+  "default": {
+    "answer": "Je n'ai pas bien compris votre question. Vous pouvez me demander des informations sur : Formations, Équipe, Vie étudiante, Contact, Quiz, ou Accueil. Essayez !"
+  }
+}

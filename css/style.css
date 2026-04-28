@@ -373,7 +373,11 @@ footer {
     margin: 0;
 }
 
-.formations-page .site-header {
+.formations-page .site-header,
+.quiz-page .site-header,
+.contact-page .site-header,
+.team-page .site-header,
+.student-life-page .site-header {
     position: fixed;
     top: 0;
     left: 0;
@@ -495,6 +499,20 @@ footer {
     border-bottom: 1px solid rgba(255, 255, 255, 0.16);
 }
 
+.formation-card-media img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+}
+
+.team-card-media img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+}
+
 .formation-card-body {
     padding: 22px;
 }
@@ -594,11 +612,19 @@ footer {
 }
 
 @media (max-width: 900px) {
-    .formations-page .site-header {
+    .formations-page .site-header,
+    .quiz-page .site-header,
+    .contact-page .site-header,
+    .team-page .site-header,
+    .student-life-page .site-header {
         padding: 14px 16px;
     }
 
-    .formations-page .header-nav {
+    .formations-page .header-nav,
+    .quiz-page .header-nav,
+    .contact-page .header-nav,
+    .team-page .header-nav,
+    .student-life-page .header-nav {
         gap: 16px;
         flex-wrap: wrap;
         justify-content: center;
@@ -643,19 +669,6 @@ footer {
         text-align: center;
         width: 100%;
     }
-}
-
-.quiz-page .site-header {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    width: 100%;
-    border-radius: 0;
-    padding: 18px 22px;
-    background: rgba(45, 45, 45, 0.78);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.18);
-    z-index: 30;
 }
 
 .quiz-content {
@@ -914,5 +927,783 @@ footer {
 
     .quiz-button {
         width: 100%;
+    }
+}
+
+/* ======================== CONTACT PAGE ======================== */
+.contact-content,
+.team-content,
+.student-life-content {
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 140px 20px 20px;
+    align-self: auto;
+    margin-top: 0;
+    color: #ffffff;
+}
+
+.contact-hero,
+.team-hero,
+.student-hero {
+    background: linear-gradient(145deg, rgba(129, 236, 236, 0.12), rgba(255, 255, 255, 0.04));
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    border-radius: 20px;
+    padding: 34px 28px;
+    color: #ffffff;
+    backdrop-filter: blur(8px);
+    box-shadow: 0 20px 45px rgba(0, 0, 0, 0.2);
+    margin-bottom: 40px;
+}
+
+.contact-hero h1,
+.team-hero h1,
+.student-hero h1 {
+    margin: 0 0 14px;
+    font-size: 2.8rem;
+    line-height: 1.15;
+}
+
+.contact-hero p,
+.team-hero p,
+.student-hero p {
+    margin: 0;
+    color: #d6e7ff;
+    font-size: 1.1rem;
+    line-height: 1.7;
+    max-width: 900px;
+}
+
+/* Contact Form */
+.contact-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    margin-bottom: 50px;
+}
+
+.contact-form-section h2,
+.contact-info-section h2 {
+    font-size: 1.8rem;
+    margin: 0 0 24px;
+    color: #ffffff;
+}
+
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group label {
+    margin-bottom: 8px;
+    color: #81ECEC;
+    font-weight: 600;
+    font-size: 0.95rem;
+}
+
+.form-group input,
+.form-group textarea {
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    border-radius: 10px;
+    padding: 12px 16px;
+    color: #ffffff;
+    font-family: 'Poppins', sans-serif;
+    font-size: 1rem;
+    transition: border-color 0.3s ease, background-color 0.3s ease;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: #81ECEC;
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.form-group textarea {
+    resize: vertical;
+    min-height: 120px;
+}
+
+.contact-form .cta-button {
+    background: #81ECEC;
+    color: #0A316C;
+    padding: 14px 24px;
+    border-radius: 10px;
+    font-weight: 700;
+    cursor: pointer;
+    border: none;
+    transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+.contact-form .cta-button:hover {
+    background: #a2f6f6;
+    transform: translateY(-2px);
+}
+
+.success-message {
+    color: #81ECEC;
+    font-weight: 600;
+    padding: 12px 16px;
+    background: rgba(129, 236, 236, 0.12);
+    border-left: 3px solid #81ECEC;
+    border-radius: 4px;
+    margin: 0;
+}
+
+/* Contact Info Section */
+.contact-info-section {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 32px;
+}
+
+/* Contact Info Cards */
+.contact-info-card,
+.facility-card,
+.value-card,
+.project-card,
+.event-card,
+.club-category {
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    border-radius: 14px;
+    padding: 24px;
+    transition: transform 0.3s ease, border-color 0.3s ease;
+    display: flex;
+    flex-direction: column;
+}
+
+.contact-info-card:hover,
+.facility-card:hover,
+.value-card:hover,
+.project-card:hover,
+.event-card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(129, 236, 236, 0.6);
+}
+
+.contact-info-card h3,
+.facility-card h3,
+.value-card h3,
+.project-card h3,
+.event-card h3 {
+    margin: 0 0 12px;
+    color: #81ECEC;
+    font-size: 1.3rem;
+}
+
+.contact-info-card p,
+.facility-card p,
+.value-card p,
+.project-card p,
+.event-card p {
+    margin: 0;
+    color: #d6e7ff;
+    line-height: 1.6;
+}
+
+.contact-info-card a,
+.footer-section a {
+    color: #81ECEC;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.contact-info-card a:hover,
+.footer-section a:hover {
+    color: #a2f6f6;
+}
+
+.about-section {
+    background: linear-gradient(145deg, rgba(129, 236, 236, 0.08), rgba(255, 255, 255, 0.02));
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 14px;
+    padding: 32px;
+    color: #ffffff;
+}
+
+.about-section h2 {
+    margin: 0 0 16px;
+    font-size: 1.6rem;
+    color: #81ECEC;
+}
+
+.about-section p {
+    margin: 12px 0;
+    color: #d6e7ff;
+    line-height: 1.7;
+}
+
+/* ======================== TEAM PAGE ======================== */
+.team-section,
+.student-section {
+    margin-bottom: 50px;
+}
+
+.team-section h2,
+.student-section h2 {
+    font-size: 2rem;
+    margin: 0 0 12px;
+    color: #ffffff;
+}
+
+.team-section > p,
+.student-section > p {
+    color: #d6e7ff;
+    font-size: 1.05rem;
+    line-height: 1.7;
+    margin-bottom: 30px;
+    max-width: 900px;
+}
+
+.team-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 24px;
+    margin-top: 24px;
+}
+
+.team-card {
+    display: flex;
+    flex-direction: column;
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    border-radius: 14px;
+    overflow: hidden;
+    transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+.team-card:hover {
+    transform: translateY(-6px);
+    border-color: rgba(129, 236, 236, 0.7);
+}
+
+.team-card-media {
+    width: 100%;
+    height: 180px;
+    background: linear-gradient(135deg, rgba(129, 236, 236, 0.2), rgba(10, 49, 108, 0.3));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.placeholder-avatar {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #81ECEC, #0A316C);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    font-weight: 700;
+    color: #ffffff;
+}
+
+.team-card-body {
+    padding: 20px;
+    flex: 1;
+}
+
+.team-card h3 {
+    margin: 0 0 8px;
+    font-size: 1.3rem;
+    color: #ffffff;
+}
+
+.team-role {
+    margin: 0 0 12px;
+    color: #81ECEC;
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+}
+
+.team-description {
+    margin: 0 0 12px;
+    color: #d6e7ff;
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+
+.team-expertise {
+    margin: 12px 0 0;
+    padding: 12px;
+    background: rgba(129, 236, 236, 0.1);
+    border-left: 2px solid #81ECEC;
+    color: #d6e7ff;
+    font-size: 0.9rem;
+    border-radius: 4px;
+}
+
+.team-values {
+    margin-top: 50px;
+}
+
+.values-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 24px;
+}
+
+/* ======================== STUDENT LIFE PAGE ======================== */
+.facilities-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 16px;
+    margin-top: 24px;
+}
+
+.facility-icon,
+.project-icon {
+    font-size: 2.5rem;
+    margin-bottom: 12px;
+}
+
+.clubs-showcase {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+    margin-top: 24px;
+}
+
+.club-category {
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    border-radius: 14px;
+    padding: 24px;
+    transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+.club-category:hover {
+    transform: translateY(-4px);
+    border-color: rgba(129, 236, 236, 0.6);
+}
+
+.club-category h3 {
+    margin: 0 0 16px;
+    color: #81ECEC;
+    font-size: 1.25rem;
+}
+
+.club-category ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.club-category li {
+    color: #d6e7ff;
+    padding: 8px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    font-size: 0.95rem;
+}
+
+.club-category li:last-child {
+    border-bottom: none;
+}
+
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 16px;
+    margin-top: 24px;
+}
+
+.project-card {
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    border-radius: 14px;
+    padding: 20px;
+    text-align: center;
+    transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+.project-card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(129, 236, 236, 0.6);
+}
+
+.events-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 16px;
+    margin-top: 24px;
+}
+
+.event-card {
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    border-radius: 14px;
+    padding: 20px;
+    transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+.event-card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(129, 236, 236, 0.6);
+}
+
+.student-cta {
+    text-align: center;
+    margin-top: 50px;
+    padding: 40px;
+    background: linear-gradient(145deg, rgba(129, 236, 236, 0.08), rgba(255, 255, 255, 0.02));
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 14px;
+}
+
+.student-cta h2 {
+    font-size: 2rem;
+    margin: 0 0 12px;
+    color: #81ECEC;
+}
+
+.student-cta p {
+    color: #d6e7ff;
+    font-size: 1.1rem;
+    margin: 0 0 24px;
+}
+
+.student-cta .cta-button {
+    margin: 0 12px;
+    padding: 14px 24px;
+    border-radius: 999px;
+}
+
+.student-cta .cta-button:first-of-type {
+    background: #81ECEC;
+    color: #0A316C;
+}
+
+.student-cta .cta-button.ghost {
+    background: transparent;
+    color: #ffffff;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+/* ======================== RESPONSIVE ======================== */
+@media (max-width: 900px) {
+    .contact-content,
+    .team-content,
+    .student-life-content {
+        padding-top: 165px;
+    }
+
+    .contact-container {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+
+    .contact-hero h1,
+    .team-hero h1,
+    .student-hero h1 {
+        font-size: 2.3rem;
+    }
+}
+
+@media (max-width: 600px) {
+    .contact-content,
+    .team-content,
+    .student-life-content {
+        padding: 190px 14px 12px;
+    }
+
+    .contact-hero,
+    .team-hero,
+    .student-hero {
+        padding: 24px 18px;
+    }
+
+    .contact-hero h1,
+    .team-hero h1,
+    .student-hero h1 {
+        font-size: 2rem;
+    }
+
+    .team-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .clubs-showcase {
+        grid-template-columns: 1fr;
+    }
+
+    .student-cta {
+        padding: 20px;
+    }
+
+    .student-cta .cta-button {
+        display: block;
+        width: 100%;
+        margin: 8px 0;
+    }
+}
+
+/* ======================== CHATBOT STYLES ======================== */
+#chatbot-bubble {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #81ECEC, #0A316C);
+    border: 2px solid #81ECEC;
+    color: #ffffff;
+    font-size: 24px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 16px rgba(129, 236, 236, 0.3);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    z-index: 999;
+}
+
+#chatbot-bubble:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 24px rgba(129, 236, 236, 0.5);
+}
+
+#chatbot-container {
+    position: fixed;
+    bottom: -500px;
+    right: 24px;
+    width: 350px;
+    max-height: 500px;
+    background: rgba(10, 49, 108, 0.98);
+    border: 1px solid rgba(129, 236, 236, 0.3);
+    border-radius: 14px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    backdrop-filter: blur(10px);
+    transition: bottom 0.3s ease;
+    z-index: 999;
+}
+
+#chatbot-container.active {
+    bottom: 100px;
+}
+
+.chatbot-header {
+    background: linear-gradient(135deg, #81ECEC, rgba(129, 236, 236, 0.7));
+    padding: 16px;
+    color: #0A316C;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.chatbot-header h3 {
+    margin: 0;
+    font-size: 1.1rem;
+    font-weight: 700;
+}
+
+#chatbot-close {
+    background: transparent;
+    border: none;
+    color: #0A316C;
+    font-size: 20px;
+    cursor: pointer;
+    padding: 0;
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    transition: transform 0.2s ease;
+}
+
+#chatbot-close:hover {
+    transform: scale(1.2);
+}
+
+#chatbot-messages {
+    flex: 1;
+    overflow-y: auto;
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    color: #ffffff;
+}
+
+#chatbot-messages::-webkit-scrollbar {
+    width: 6px;
+}
+
+#chatbot-messages::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 3px;
+}
+
+#chatbot-messages::-webkit-scrollbar-thumb {
+    background: rgba(129, 236, 236, 0.3);
+    border-radius: 3px;
+}
+
+#chatbot-messages::-webkit-scrollbar-thumb:hover {
+    background: rgba(129, 236, 236, 0.5);
+}
+
+.chatbot-message {
+    padding: 10px 12px;
+    border-radius: 10px;
+    max-width: 85%;
+    word-wrap: break-word;
+    font-size: 0.95rem;
+    line-height: 1.4;
+}
+
+.user-message {
+    align-self: flex-end;
+    background: #81ECEC;
+    color: #0A316C;
+    font-weight: 600;
+}
+
+.bot-message {
+    align-self: flex-start;
+    background: rgba(255, 255, 255, 0.1);
+    color: #d6e7ff;
+    border: 1px solid rgba(129, 236, 236, 0.3);
+}
+
+.chatbot-quick-buttons {
+    padding: 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    border-top: 1px solid rgba(129, 236, 236, 0.2);
+}
+
+.chatbot-quick-btn {
+    background: rgba(129, 236, 236, 0.15);
+    border: 1px solid rgba(129, 236, 236, 0.4);
+    color: #81ECEC;
+    padding: 8px 12px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 0.85rem;
+    font-weight: 600;
+    transition: all 0.2s ease;
+    text-align: left;
+}
+
+.chatbot-quick-btn:hover {
+    background: rgba(129, 236, 236, 0.3);
+    border-color: #81ECEC;
+    transform: translateX(4px);
+}
+
+#chatbot-form {
+    display: flex;
+    gap: 8px;
+    padding: 12px;
+    border-top: 1px solid rgba(129, 236, 236, 0.2);
+}
+
+#chatbot-input {
+    flex: 1;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(129, 236, 236, 0.3);
+    border-radius: 8px;
+    padding: 10px 12px;
+    color: #ffffff;
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.9rem;
+    transition: border-color 0.2s ease;
+}
+
+#chatbot-input:focus {
+    outline: none;
+    border-color: #81ECEC;
+    background: rgba(255, 255, 255, 0.12);
+}
+
+#chatbot-input::placeholder {
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.chatbot-send-btn {
+    background: #81ECEC;
+    border: none;
+    color: #0A316C;
+    width: 36px;
+    height: 36px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 700;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.chatbot-send-btn:hover {
+    background: #a2f6f6;
+    transform: scale(1.05);
+}
+
+.chatbot-send-btn:active {
+    transform: scale(0.95);
+}
+
+/* Mobile responsive */
+@media (max-width: 480px) {
+    #chatbot-container {
+        width: calc(100% - 48px);
+        max-width: none;
+        bottom: -500px;
+        right: 24px;
+        left: 24px;
+    }
+
+    #chatbot-container.active {
+        bottom: 100px;
+    }
+
+    #chatbot-bubble {
+        bottom: 20px;
+        right: 20px;
+    }
+
+    .chatbot-message {
+        max-width: 90%;
+    }
+}
+.contact-page .contact-content,
+.team-page .team-content,
+.student-life-page .student-life-content {
+    padding-top: 140px;
+}
+
+@media (max-width: 900px) {
+    .contact-page .contact-content,
+    .team-page .team-content,
+    .student-life-page .student-life-content {
+        padding-top: 140px;
+    }
+}
+
+@media (max-width: 600px) {
+    .contact-page .contact-content,
+    .team-page .team-content,
+    .student-life-page .student-life-content {
+        padding: 140px 14px 12px;
     }
 }

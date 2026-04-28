@@ -5,8 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Équipe</title>
     <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
-<body>
+<body class="team-page">
     <header class="site-header">
         <nav class="header-nav">
             <a class="logo-link" href="accueil.html">
@@ -14,16 +15,132 @@
             </a>
             <a href="accueil.html">Accueil</a>
             <a href="formations.html">Formations</a>
-            <a href="quiz.html">Quiz</a>
             <a href="equipe.html">Équipe</a>
             <a href="vie-etudiante.html">Vie étudiante</a>
+            <a href="quiz.html">Quiz</a>
+            <a href="contact.html">Contact</a>
         </nav>
     </header>
 
-    <main class="page-content">
-        <h1>Équipe</h1>
-        <p>Page en construction. Cette section présentera bientôt l’équipe et les intervenants.</p>
-        <a class="back-link" href="accueil.html">Retour à l'accueil</a>
+    <main class="page-content team-content">
+        <section class="team-hero">
+            <p class="section-subtitle">ÉQUIPE</p>
+            <h1>Nos enseignants et intervenants</h1>
+            <p>
+                Rencontrez les experts qui animent nos formations en informatique.
+                Une équipe passionnée et expérimentée au service de votre réussite.
+            </p>
+        </section>
+
+        <section class="team-section">
+            <h2>Département informatique</h2>
+            <div class="team-grid">
+                <article class="team-card">
+                    <div class="team-card-media">
+                        <img src="../data/Efrei-equipe.jpg" alt="Équipe pédagogique EFREI">
+                    </div>
+                    <div class="team-card-body">
+                        <h3>Responsable du département informatique</h3>
+                        <p class="team-role">Direction pédagogique</p>
+                        <p class="team-description">Responsable global du département. Pilote la stratégie pédagogique et les partenariats industriels.</p>
+                        <p class="team-expertise">Expertise : Gestion pédagogique, Stratégie informatique</p>
+                    </div>
+                </article>
+
+                <article class="team-card">
+                    <div class="team-card-media">
+                        <img src="../data/efrei-amphi.jpg" alt="Enseignement du développement web EFREI">
+                    </div>
+                    <div class="team-card-body">
+                        <h3>Enseignant développement web</h3>
+                        <p class="team-role">Web & Frontend</p>
+                        <p class="team-description">Spécialiste des technologies web modernes. Enseigne HTML, CSS, JavaScript et les frameworks populaires.</p>
+                        <p class="team-expertise">Expertise : React, Vue.js, Node.js, Full-stack</p>
+                    </div>
+                </article>
+
+                <article class="team-card">
+                    <div class="team-card-media">
+                        <img src="../data/efrei-atelier.jpg" alt="Enseignant cybersécurité dans un espace collaboratif">
+                    </div>
+                    <div class="team-card-body">
+                        <h3>Enseignant cybersécurité</h3>
+                        <p class="team-role">Sécurité informatique</p>
+                        <p class="team-description">Expert en sécurité informatique et protection des données. Enseigne les principes fondamentaux et les meilleures pratiques.</p>
+                        <p class="team-expertise">Expertise : Cryptographie, Audit, RGPD, Network Security</p>
+                    </div>
+                </article>
+
+                <article class="team-card">
+                    <div class="team-card-media">
+                        <img src="../data/efrei-etudiants-lab.jpg" alt="Enseignant data et IA dans un contexte de campus">
+                    </div>
+                    <div class="team-card-body">
+                        <h3>Enseignant data &amp; IA</h3>
+                        <p class="team-role">Data Science &amp; ML</p>
+                        <p class="team-description">Spécialiste de la science des données et de l'intelligence artificielle. Enseigne Python, Machine Learning et Big Data.</p>
+                        <p class="team-expertise">Expertise : Python, TensorFlow, Data Analytics, ML Ops</p>
+                    </div>
+                </article>
+
+                <article class="team-card">
+                    <div class="team-card-media">
+                        <img src="../data/efrei-campus-modern.jpg" alt="Intervenant professionnel sur le campus EFREI">
+                    </div>
+                    <div class="team-card-body">
+                        <h3>Intervenant professionnel</h3>
+                        <p class="team-role">Lien industrie-école</p>
+                        <p class="team-description">Professionnel en activité partageant son expérience en entreprise et les tendances du marché informatique.</p>
+                        <p class="team-expertise">Expertise : Développement en production, Best practices, Tendances tech</p>
+                    </div>
+                </article>
+
+                <article class="team-card">
+                    <div class="team-card-media">
+                        <img src="../data/Efrei-vie-etudiante.jpg" alt="Accompagnement des étudiants EFREI">
+                    </div>
+                    <div class="team-card-body">
+                        <h3>Référent accompagnement étudiant</h3>
+                        <p class="team-role">Support pédagogique</p>
+                        <p class="team-description">Accompagne les étudiants dans leur parcours académique et leur aide dans la gestion des difficultés.</p>
+                        <p class="team-expertise">Expertise : Mentorat, Orientation, Bem-être étudiant</p>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <section class="team-values">
+            <h2>Nos valeurs</h2>
+            <div class="values-grid">
+                <article class="value-card">
+                    <h3>Excellence pédagogique</h3>
+                    <p>Une formation de qualité dispensée par des experts passionnés et à jour des dernières technologi.</p>
+                </article>
+                <article class="value-card">
+                    <h3>Proximité avec l'industrie</h3>
+                    <p>Des intervenants du secteur et des partenariats pour une formation alignée avec le marché du travail.</p>
+                </article>
+                <article class="value-card">
+                    <h3>Accompagnement personnalisé</h3>
+                    <p>Un soutien individuel pour aider chaque étudiant à réussir et à développer son potentiel.</p>
+                </article>
+            </div>
+        </section>
+
+        <section class="team-section">
+            <h2>Un environnement de travail moderne</h2>
+            <div class="formations-grid">
+                <article class="formation-card">
+                    <div class="formation-card-media">
+                        <img src="../data/efrei-campus-life.jpg" alt="Locaux EFREI à Villejuif">
+                    </div>
+                    <div class="formation-card-body">
+                        <h3>Locaux et espaces collaboratifs</h3>
+                        <p>Un cadre de travail moderne pour les cours, les échanges et l'accompagnement des étudiants.</p>
+                    </div>
+                </article>
+            </div>
+        </section>
     </main>
 
     <footer>
@@ -36,24 +153,25 @@
                 <ul>
                     <li><a href="accueil.html">Accueil</a></li>
                     <li><a href="formations.html">Formations</a></li>
-                    <li><a href="quiz.html">Quiz</a></li>
                     <li><a href="equipe.html">Équipe</a></li>
                     <li><a href="vie-etudiante.html">Vie étudiante</a></li>
+                    <li><a href="quiz.html">Quiz</a></li>
+                    <li><a href="contact.html">Contact</a></li>
                 </ul>
             </div>
             <div class="footer-section">
                 <h4>Contact</h4>
-                <p>Email: contact@efrei.fr</p>
-                <p>Téléphone: +33 1 XX XX XX XX</p>
-                <p>Adresse: Campus EFREI, Villejuif</p>
+                <p>Email: <a href="mailto:admissions@efrei.fr">admissions@efrei.fr</a></p>
+                <p>Téléphone: <a href="tel:+33188289001">+33 1 88 28 90 01</a></p>
+                <p>Adresse: 30-32 avenue de la République, 94800 Villejuif</p>
             </div>
             <div class="footer-section">
                 <h4>Réseaux sociaux</h4>
                 <div class="social-links">
-                    <a href="#" title="Facebook">f</a>
-                    <a href="#" title="Twitter">Tw</a>
-                    <a href="#" title="LinkedIn">in</a>
-                    <a href="#" title="Instagram">📷</a>
+                    <a href="https://www.facebook.com/EfreiParis" target="_blank"><i class="fab fa-facebook"></i></a>
+                    <a href="https://twitter.com/efrei_paris" target="_blank"><i class="fab fa-twitter"></i></a>
+                    <a href="https://www.linkedin.com/school/efrei/" target="_blank"><i class="fab fa-linkedin"></i></a>
+                    <a href="https://www.instagram.com/efrei_paris/" target="_blank"><i class="fab fa-instagram"></i></a>
                 </div>
             </div>
         </div>
@@ -61,5 +179,28 @@
             <p>&copy; 2026 - DURAND Gabriel - GUICHARD Louis</p>
         </div>
     </footer>
+
+    <!-- Chatbot -->
+    <button id="chatbot-bubble" title="Assistant EFREI">💬</button>
+    <div id="chatbot-container">
+        <div class="chatbot-header">
+            <h3>Assistant EFREI</h3>
+            <button id="chatbot-close">&times;</button>
+        </div>
+        <div id="chatbot-messages"></div>
+        <div class="chatbot-quick-buttons">
+            <button class="chatbot-quick-btn" data-question="Parlez-moi des formations">Formations</button>
+            <button class="chatbot-quick-btn" data-question="Qui sont les enseignants ?">Équipe</button>
+            <button class="chatbot-quick-btn" data-question="Quelle est la vie étudiante ?">Vie étudiante</button>
+            <button class="chatbot-quick-btn" data-question="Comment vous contacter ?">Contact</button>
+            <button class="chatbot-quick-btn" data-question="Y a-t-il un quiz ?">Quiz</button>
+        </div>
+        <form id="chatbot-form">
+            <input type="text" id="chatbot-input" placeholder="Votre question..." required>
+            <button type="submit" class="chatbot-send-btn">→</button>
+        </form>
+    </div>
+
+    <script src="../js/chatbot.js"></script>
 </body>
 </html>

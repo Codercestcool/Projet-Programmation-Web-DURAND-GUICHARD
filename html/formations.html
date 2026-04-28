@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Formations</title>
     <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 <body class="formations-page">
     <header class="site-header">
@@ -14,9 +15,10 @@
             </a>
             <a href="accueil.html">Accueil</a>
             <a href="formations.html">Formations</a>
-            <a href="quiz.html">Quiz</a>
             <a href="equipe.html">Équipe</a>
             <a href="vie-etudiante.html">Vie étudiante</a>
+            <a href="quiz.html">Quiz</a>
+            <a href="contact.html">Contact</a>
         </nav>
     </header>
 
@@ -40,10 +42,27 @@
         </section>
 
         <section class="formations-block with-separator">
+            <h2>Des espaces modernes</h2>
+            <div class="formations-grid">
+                <article class="formation-card">
+                    <div class="formation-card-media">
+                        <img src="../data/efrei-campus-modern.jpg" alt="Campus EFREI moderne">
+                    </div>
+                    <div class="formation-card-body">
+                        <h3>Un environnement adapté aux projets</h3>
+                        <p>Open spaces, zones de travail collaboratives et locaux modernes accompagnent les étudiants au quotidien.</p>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <section class="formations-block with-separator">
             <h2>Nos parcours</h2>
             <div class="formations-grid">
                 <article class="formation-card">
-                    <div class="formation-card-media" aria-hidden="true">Image Bachelor</div>
+                    <div class="formation-card-media">
+                        <img src="../data/efrei-amphi.jpg" alt="Étudiants en amphithéâtre EFREI">
+                    </div>
                     <div class="formation-card-body">
                         <h3>Bachelor Informatique</h3>
                         <p class="formation-label">Description</p>
@@ -62,7 +81,9 @@
                 </article>
 
                 <article class="formation-card">
-                    <div class="formation-card-media" aria-hidden="true">Image Cycle ingénieur</div>
+                    <div class="formation-card-media">
+                        <img src="../data/efrei-atelier.jpg" alt="Atelier EFREI">
+                    </div>
                     <div class="formation-card-body">
                         <h3>Cycle Ingénieur</h3>
                         <p class="formation-label">Description</p>
@@ -81,7 +102,9 @@
                 </article>
 
                 <article class="formation-card specialisation-card">
-                    <div class="formation-card-media" aria-hidden="true">Image Spécialisations</div>
+                    <div class="formation-card-media">
+                        <img src="../data/efrei-etudiants-lab.jpg" alt="Étudiants EFREI en laboratoire">
+                    </div>
                     <div class="formation-card-body">
                         <h3>Spécialisations</h3>
                         <p class="formation-label">Exemples</p>
@@ -133,24 +156,25 @@
                 <ul>
                     <li><a href="accueil.html">Accueil</a></li>
                     <li><a href="formations.html">Formations</a></li>
-                    <li><a href="quiz.html">Quiz</a></li>
                     <li><a href="equipe.html">Équipe</a></li>
                     <li><a href="vie-etudiante.html">Vie étudiante</a></li>
+                    <li><a href="quiz.html">Quiz</a></li>
+                    <li><a href="contact.html">Contact</a></li>
                 </ul>
             </div>
             <div class="footer-section">
                 <h4>Contact</h4>
-                <p>Email: contact@efrei.fr</p>
-                <p>Téléphone: +33 1 XX XX XX XX</p>
-                <p>Adresse: Campus EFREI, Villejuif</p>
+                <p>Email: <a href="mailto:admissions@efrei.fr">admissions@efrei.fr</a></p>
+                <p>Téléphone: <a href="tel:+33188289001">+33 1 88 28 90 01</a></p>
+                <p>Adresse: 30-32 avenue de la République, 94800 Villejuif</p>
             </div>
             <div class="footer-section">
                 <h4>Réseaux sociaux</h4>
                 <div class="social-links">
-                    <a href="#" title="Facebook">f</a>
-                    <a href="#" title="Twitter">Tw</a>
-                    <a href="#" title="LinkedIn">in</a>
-                    <a href="#" title="Instagram">📷</a>
+                    <a href="https://www.facebook.com/EfreiParis" target="_blank"><i class="fab fa-facebook"></i></a>
+                    <a href="https://twitter.com/efrei_paris" target="_blank"><i class="fab fa-twitter"></i></a>
+                    <a href="https://www.linkedin.com/school/efrei/" target="_blank"><i class="fab fa-linkedin"></i></a>
+                    <a href="https://www.instagram.com/efrei_paris/" target="_blank"><i class="fab fa-instagram"></i></a>
                 </div>
             </div>
         </div>
@@ -158,5 +182,28 @@
             <p>&copy; 2026 - DURAND Gabriel - GUICHARD Louis</p>
         </div>
     </footer>
+
+    <!-- Chatbot -->
+    <button id="chatbot-bubble" title="Assistant EFREI">💬</button>
+    <div id="chatbot-container">
+        <div class="chatbot-header">
+            <h3>Assistant EFREI</h3>
+            <button id="chatbot-close">&times;</button>
+        </div>
+        <div id="chatbot-messages"></div>
+        <div class="chatbot-quick-buttons">
+            <button class="chatbot-quick-btn" data-question="Parlez-moi des formations">Formations</button>
+            <button class="chatbot-quick-btn" data-question="Qui sont les enseignants ?">Équipe</button>
+            <button class="chatbot-quick-btn" data-question="Quelle est la vie étudiante ?">Vie étudiante</button>
+            <button class="chatbot-quick-btn" data-question="Comment vous contacter ?">Contact</button>
+            <button class="chatbot-quick-btn" data-question="Y a-t-il un quiz ?">Quiz</button>
+        </div>
+        <form id="chatbot-form">
+            <input type="text" id="chatbot-input" placeholder="Votre question..." required>
+            <button type="submit" class="chatbot-send-btn">→</button>
+        </form>
+    </div>
+
+    <script src="../js/chatbot.js"></script>
 </body>
 </html>

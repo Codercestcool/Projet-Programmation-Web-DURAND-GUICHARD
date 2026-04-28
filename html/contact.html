@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body class="contact-page">
+    <header class="site-header">
+        <nav class="header-nav">
+            <a class="logo-link" href="accueil.html">
+                <img src="../data/LOGO_EFREI-PRINT_EFREI-WEB.png" alt="Logo EFREI" class="logo">
+            </a>
+            <a href="accueil.html">Accueil</a>
+            <a href="formations.html">Formations</a>
+            <a href="equipe.html">Équipe</a>
+            <a href="vie-etudiante.html">Vie étudiante</a>
+            <a href="quiz.html">Quiz</a>
+            <a href="contact.html">Contact</a>
+        </nav>
+    </header>
+
+    <main class="page-content contact-content">
+        <section class="contact-hero">
+            <p class="section-subtitle">CONTACT</p>
+            <h1>Nous vous répondrons avec plaisir</h1>
+            <p>Vous avez une question sur nos formations, nos programmes ou l'école ? N'hésitez pas à nous contacter !</p>
+        </section>
+
+        <div class="contact-container">
+            <!-- Formulaire de contact -->
+            <section class="contact-form-section">
+                <h2>Envoyez-nous un message</h2>
+                <form class="contact-form" id="contact-form">
+                    <div class="form-group">
+                        <label for="name">Nom complet</label>
+                        <input type="text" id="name" name="name" required placeholder="Votre nom">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" required placeholder="votre.email@exemple.com">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="subject">Sujet</label>
+                        <input type="text" id="subject" name="subject" required placeholder="Objet de votre message">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea id="message" name="message" rows="6" required placeholder="Votre message..."></textarea>
+                    </div>
+
+                    <button type="submit" class="cta-button">Envoyer</button>
+                    <div id="form-message"></div>
+                </form>
+            </section>
+
+            <!-- Informations de contact -->
+            <section class="contact-info-section">
+                <h2>Nos coordonnées</h2>
+
+                <article class="contact-info-card">
+                    <h3>Adresse</h3>
+                    <p>30-32 avenue de la République<br>94800 Villejuif<br>France</p>
+                </article>
+
+                <article class="contact-info-card">
+                    <h3>Téléphone</h3>
+                    <p><a href="tel:+33188289001">+33 1 88 28 90 01</a></p>
+                </article>
+
+                <article class="contact-info-card">
+                    <h3>Email</h3>
+                    <p><a href="mailto:admissions@efrei.fr">admissions@efrei.fr</a></p>
+                </article>
+
+                <article class="contact-info-card">
+                    <h3>Horaires</h3>
+                    <p>Lundi - Vendredi : 9h00 - 17h00<br>Samedi - Dimanche : Fermé</p>
+                </article>
+            </section>
+        </div>
+
+        <section class="formations-block with-separator">
+            <h2>Le campus en images</h2>
+            <div class="formations-grid">
+                <article class="formation-card">
+                    <div class="formation-card-media">
+                        <img src="../data/efrei-campus-modern.jpg" alt="Campus EFREI">
+                    </div>
+                    <div class="formation-card-body">
+                        <h3>Campus EFREI Paris</h3>
+                        <p>Situé à Villejuif, le campus EFREI offre un environnement moderne et convivial, propice aux études et aux projets collaboratifs.</p>
+                    </div>
+                </article>
+
+                <article class="formation-card">
+                    <div class="formation-card-media">
+                        <img src="../data/efrei-atelier.jpg" alt="Espaces modernes du campus EFREI">
+                    </div>
+                    <div class="formation-card-body">
+                        <h3>Espaces modernes</h3>
+                        <p>Le campus dispose d’espaces innovants : salles collaboratives, espaces de coworking et laboratoires technologiques pour favoriser l’apprentissage et la créativité.</p>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <!-- Section À propos -->
+        <section class="about-section">
+            <h2>À propos du projet</h2>
+            <p>
+                Ce site vitrine a été réalisé dans le cadre du projet Web <strong>TI402</strong> par 
+                <strong>DURAND Gabriel</strong> et <strong>GUICHARD Louis</strong>.
+            </p>
+            <p>
+                C'est une démonstration des compétences en HTML, CSS et JavaScript moderne,
+                avec une attention particulière au design responsif et à l'expérience utilisateur.
+            </p>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <img src="../data/LOGO_EFREI-PRINT_EFREI-WEB.png" alt="Logo EFREI" class="footer-logo">
+            </div>
+            <div class="footer-section">
+                <h4>Liens</h4>
+                <ul>
+                    <li><a href="accueil.html">Accueil</a></li>
+                    <li><a href="formations.html">Formations</a></li>
+                    <li><a href="equipe.html">Équipe</a></li>
+                    <li><a href="vie-etudiante.html">Vie étudiante</a></li>
+                    <li><a href="quiz.html">Quiz</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Contact</h4>
+                <p>Email: <a href="mailto:admissions@efrei.fr">admissions@efrei.fr</a></p>
+                <p>Téléphone: <a href="tel:+33188289001">+33 1 88 28 90 01</a></p>
+                <p>Adresse: 30-32 avenue de la République, 94800 Villejuif</p>
+            </div>
+            <div class="footer-section">
+                <h4>Réseaux sociaux</h4>
+                <div class="social-links">
+                    <a href="https://www.facebook.com/EfreiParis" target="_blank"><i class="fab fa-facebook"></i></a>
+                    <a href="https://twitter.com/efrei_paris" target="_blank"><i class="fab fa-twitter"></i></a>
+                    <a href="https://www.linkedin.com/school/efrei/" target="_blank"><i class="fab fa-linkedin"></i></a>
+                    <a href="https://www.instagram.com/efrei_paris/" target="_blank"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 - DURAND Gabriel - GUICHARD Louis</p>
+        </div>
+    </footer>
+
+    <script>
+        // Gestion du formulaire de contact
+        document.getElementById('contact-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const subject = document.getElementById('subject').value;
+            const message = document.getElementById('message').value;
+            
+            // Message de confirmation (pas d'envoi réel en local)
+            const messageDiv = document.getElementById('form-message');
+            messageDiv.innerHTML = '<p class="success-message">✓ Merci ' + name + ' ! Votre message a été envoyé avec succès.</p>';
+            messageDiv.style.marginTop = '20px';
+            
+            // Réinitialiser le formulaire
+            this.reset();
+            
+            // Effacer le message après 5 secondes
+            setTimeout(() => {
+                messageDiv.innerHTML = '';
+            }, 5000);
+        });
+    </script>
+
+    <!-- Chatbot -->
+    <button id="chatbot-bubble" title="Assistant EFREI">💬</button>
+    <div id="chatbot-container">
+        <div class="chatbot-header">
+            <h3>Assistant EFREI</h3>
+            <button id="chatbot-close">&times;</button>
+        </div>
+        <div id="chatbot-messages"></div>
+        <div class="chatbot-quick-buttons">
+            <button class="chatbot-quick-btn" data-question="Parlez-moi des formations">Formations</button>
+            <button class="chatbot-quick-btn" data-question="Qui sont les enseignants ?">Équipe</button>
+            <button class="chatbot-quick-btn" data-question="Quelle est la vie étudiante ?">Vie étudiante</button>
+            <button class="chatbot-quick-btn" data-question="Comment vous contacter ?">Contact</button>
+            <button class="chatbot-quick-btn" data-question="Y a-t-il un quiz ?">Quiz</button>
+        </div>
+        <form id="chatbot-form">
+            <input type="text" id="chatbot-input" placeholder="Votre question..." required>
+            <button type="submit" class="chatbot-send-btn">→</button>
+        </form>
+    </div>
+
+    <script src="../js/chatbot.js"></script>
+</body>
+</html>
