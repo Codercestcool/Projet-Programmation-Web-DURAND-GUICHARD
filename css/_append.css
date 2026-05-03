@@ -1,0 +1,517 @@
+/* ===== SHARED PAGE SHELL ===== */
+.about-project-page .site-header,
+.partners-page .site-header,
+.admissions-page .site-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    border-radius: 0;
+    padding: 18px 22px;
+    background: rgba(45, 45, 45, 0.78);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.18);
+    z-index: 30;
+}
+
+.about-project-page main,
+.partners-page main,
+.admissions-page main {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 140px 20px 20px;
+    color: #ffffff;
+}
+
+.about-project-page .about-hero,
+.partners-page .partners-hero,
+.admissions-page .partners-hero,
+.admissions-page .admissions-hero {
+    background: linear-gradient(145deg, rgba(129, 236, 236, 0.12), rgba(255, 255, 255, 0.04));
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    border-radius: 20px;
+    padding: 34px 28px;
+    color: #ffffff;
+    backdrop-filter: blur(8px);
+    box-shadow: 0 20px 45px rgba(0, 0, 0, 0.2);
+    margin: 0 0 40px;
+}
+
+.about-project-page .about-hero h1,
+.partners-page .partners-hero h1,
+.admissions-page .partners-hero h1,
+.admissions-page .admissions-hero h1 {
+    margin: 0 0 14px;
+    font-size: 2.8rem;
+    line-height: 1.15;
+}
+
+.about-project-page .about-hero .lead,
+.partners-page .partners-hero .lead,
+.admissions-page .partners-hero .lead,
+.admissions-page .admissions-hero .lead {
+    margin: 0;
+    color: #d6e7ff;
+    font-size: 1.1rem;
+    line-height: 1.7;
+}
+
+/* Card grids and layouts */
+.about-project-page .member-grid,
+.about-project-page .process-timeline,
+.about-project-page .choices,
+.about-project-page .technologies,
+.about-project-page .quality-grid,
+.about-project-page .mockup-preview-grid,
+.partners-page .partners-metrics,
+.partners-page .career-timeline,
+.partners-page .metiers,
+.partners-page .relations,
+.admissions-page .admissions-paths,
+.admissions-page .application-steps,
+.admissions-page .faq-section,
+.admissions-page .campus-access,
+.admissions-page .admissions-cta {
+    margin: 0 0 40px;
+    padding: 0;
+}
+
+.about-project-page .member-grid h2,
+.about-project-page .process-timeline h2,
+.about-project-page .choices h2,
+.about-project-page .technologies h2,
+.about-project-page .quality-grid h2,
+.about-project-page .mockup-preview-grid h2,
+.partners-page .partners-metrics h2,
+.partners-page .career-timeline h2,
+.partners-page .metiers h2,
+.partners-page .relations h2,
+.admissions-page .admissions-paths h2,
+.admissions-page .application-steps h2,
+.admissions-page .faq-section h2,
+.admissions-page .campus-access h2 {
+    margin: 0 0 24px;
+    color: #ffffff;
+    font-size: 1.8rem;
+    font-weight: 700;
+}
+
+.about-project-page .members,
+.about-project-page .timeline-grid,
+.about-project-page .mockups,
+.partners-page .metrics-grid,
+.admissions-page .paths-grid,
+.partners-page .company-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 18px;
+}
+
+/* Card styles */
+.about-project-page .member-card,
+.about-project-page .timeline-item,
+.about-project-page .mockup-card,
+.partners-page .metric-card,
+.admissions-page .path-card,
+.partners-page .company-card,
+.admissions-page .steps-list li {
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    border-radius: 18px;
+    overflow: hidden;
+    transition: transform 0.25s ease, border-color 0.25s ease, background-color 0.25s ease;
+    padding: 22px;
+}
+
+.about-project-page .member-card:hover,
+.about-project-page .timeline-item:hover,
+.about-project-page .mockup-card:hover,
+.partners-page .metric-card:hover,
+.admissions-page .path-card:hover,
+.partners-page .company-card:hover,
+.admissions-page .steps-list li:hover {
+    transform: translateY(-5px);
+    border-color: rgba(129, 236, 236, 0.7);
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.about-project-page .member-card img,
+.about-project-page .mockup-card img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    margin-bottom: 16px;
+}
+
+.about-project-page .member-card h3,
+.about-project-page .timeline-item strong,
+.about-project-page .mockup-card h4,
+.partners-page .metric-card h3,
+.admissions-page .path-card h3,
+.partners-page .company-card h3 {
+    margin: 0 0 8px;
+    color: #ffffff;
+    font-weight: 700;
+}
+
+.about-project-page .member-card .role,
+.about-project-page .member-card .bio,
+.about-project-page .timeline-item p,
+.about-project-page .mockup-card p,
+.partners-page .metric-card p,
+.admissions-page .path-card p,
+.partners-page .company-card p,
+.about-project-page .choices p,
+.about-project-page .technologies li,
+.about-project-page .quality-grid li,
+.admissions-page .faq-answer,
+.admissions-page .campus-map {
+    color: #d6e7ff;
+    line-height: 1.7;
+    margin: 0;
+}
+
+/* Partnerships metrics - enlargement */
+.partners-page .metric-card h3 {
+    font-size: 30px !important;
+    line-height: 1.15 !important;
+    margin-bottom: 10px !important;
+}
+
+.partners-page .metric-card p {
+    font-size: 16px !important;
+    line-height: 1.55 !important;
+}
+
+/* Lists */
+.about-project-page .quality-grid ul,
+.about-project-page .technologies ul,
+.admissions-page .steps-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.about-project-page .quality-grid ul {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 12px;
+}
+
+.about-project-page .quality-grid ul li,
+.about-project-page .technologies li {
+    padding: 12px 14px;
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.admissions-page .steps-list li {
+    position: relative;
+    padding-left: 30px;
+}
+
+.admissions-page .steps-list li::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, #81ECEC, #FDCB6E);
+}
+
+/* Timeline and steps */
+.partners-page .timeline {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin: 0;
+}
+
+.partners-page .timeline-step {
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    padding: 14px 16px;
+    border-radius: 12px;
+    color: #d6e7ff;
+}
+
+/* Filters */
+.partners-page .filters,
+.formations-filters {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin: 0 0 24px;
+}
+
+.partners-page .filter-btn,
+.formations-filters .filter-btn {
+    background: transparent;
+    border: 1px solid rgba(129, 236, 236, 0.18);
+    color: #d6e7ff;
+    padding: 8px 12px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.partners-page .filter-btn:hover,
+.formations-filters .filter-btn:hover {
+    background: rgba(129, 236, 236, 0.12);
+    border-color: #81ECEC;
+}
+
+.partners-page .filter-btn.active,
+.partners-page .filter-btn:active,
+.formations-filters .filter-btn.active {
+    background: #81ECEC;
+    color: #0A316C;
+    border-color: #81ECEC;
+}
+
+/* Tables */
+.partners-page .table-wrap {
+    overflow: auto;
+    border-radius: 18px;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    background: rgba(255, 255, 255, 0.04);
+}
+
+.partners-page .career-table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 760px;
+}
+
+.partners-page .career-table th,
+.partners-page .career-table td {
+    text-align: left;
+    padding: 14px 12px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    color: #d6e7ff;
+}
+
+.partners-page .career-table thead th {
+    background: rgba(10, 49, 108, 0.3);
+    color: #ffffff;
+}
+
+/* FAQ */
+.admissions-page .faq-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.admissions-page .faq-item {
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.admissions-page .faq-question {
+    width: 100%;
+    text-align: left;
+    background: transparent;
+    color: #ffffff;
+    padding: 14px 16px;
+    border: none;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+/* CTA buttons */
+.admissions-page .admissions-cta,
+.partners-page .partners-cta {
+    text-align: center;
+}
+
+.admissions-page .cta-button,
+.partners-page .cta-button {
+    display: inline-block;
+    background: #81ECEC;
+    color: #0A316C;
+    padding: 12px 20px;
+    border-radius: 999px;
+    font-weight: 700;
+    text-decoration: none;
+}
+
+/* Agenda Section */
+.agenda-section {
+    padding: 40px 20px 60px;
+    max-width: 1200px;
+    margin: 0 auto;
+    color: #ffffff;
+}
+
+#agenda-filters {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-bottom: 30px;
+}
+
+#agenda-filters .filter-btn {
+    background: transparent;
+    border: 1px solid rgba(129, 236, 236, 0.3);
+    color: #d6e7ff;
+    padding: 10px 18px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    font-weight: 600;
+    transition: all 0.2s ease;
+}
+
+#agenda-filters .filter-btn:hover {
+    border-color: #81ECEC;
+    background: rgba(129, 236, 236, 0.1);
+    color: #81ECEC;
+}
+
+#agenda-filters .filter-btn.active {
+    background: #81ECEC;
+    color: #0A316C;
+    border-color: #81ECEC;
+}
+
+#agenda-cards {
+    display: grid !important;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)) !important;
+    gap: 24px !important;
+}
+
+.event-card {
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    padding: 24px;
+    border-radius: 18px;
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.event-card:hover {
+    transform: translateY(-6px);
+    border-color: rgba(129, 236, 236, 0.6);
+    background: rgba(255, 255, 255, 0.12);
+}
+
+.event-card h3 {
+    margin: 0;
+    color: #ffffff;
+    font-size: 1.25rem;
+    font-weight: 700;
+    line-height: 1.3;
+}
+
+.event-card .event-date {
+    margin: 0;
+    color: #81ECEC;
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+.event-card p {
+    margin: 0;
+    color: #d6e7ff;
+    font-size: 0.95rem;
+    line-height: 1.5;
+}
+
+.event-card a {
+    color: #81ECEC;
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.2s ease;
+}
+
+.event-card a:hover {
+    color: #FDCB6E;
+}
+
+/* Chatbot styles */
+.chatbot-suggestions {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    padding: 8px 12px 16px;
+}
+
+.chatbot-suggestion-btn {
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(129, 236, 236, 0.18);
+    color: #d6e7ff;
+    padding: 8px 10px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-size: 0.85rem;
+}
+
+.chatbot-suggestion-btn:hover {
+    background: #81ECEC;
+    color: #0A316C;
+    border-color: #81ECEC;
+}
+
+.chatbot-cta {
+    display: inline-block;
+    padding: 8px 12px;
+    background: #81ECEC;
+    color: #0A316C;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 700;
+    transition: all 0.2s ease;
+}
+
+.chatbot-cta:hover {
+    background: #a2f6f6;
+}
+
+/* Mobile responsive */
+@media (max-width: 640px) {
+    .about-project-page .about-hero,
+    .partners-page .partners-hero,
+    .admissions-page .partners-hero,
+    .admissions-page .admissions-hero {
+        margin-top: 100px;
+        padding: 28px 20px;
+        border-radius: 16px;
+    }
+
+    .about-project-page .about-hero h1,
+    .partners-page .partners-hero h1,
+    .admissions-page .partners-hero h1,
+    .admissions-page .admissions-hero h1 {
+        font-size: 2.1rem;
+    }
+
+    .partners-page .career-table {
+        min-width: 640px;
+    }
+
+    .about-project-page .members,
+    .about-project-page .timeline-grid,
+    .about-project-page .mockups,
+    .partners-page .metrics-grid,
+    .admissions-page .paths-grid,
+    .partners-page .company-cards,
+    .about-project-page .quality-grid ul {
+        grid-template-columns: 1fr;
+    }
+
+    .partners-page .timeline {
+        flex-direction: column;
+    }
+
+    #agenda-cards {
+        grid-template-columns: 1fr !important;
+    }
+}

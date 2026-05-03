@@ -9,16 +9,20 @@
 </head>
 <body class="student-life-page">
     <header class="site-header">
-        <nav class="header-nav">
+        <nav class="header-nav" id="main-nav">
             <a class="logo-link" href="accueil.html">
                 <img src="../data/LOGO_EFREI-PRINT_EFREI-WEB.png" alt="Logo EFREI" class="logo">
             </a>
+            <button class="nav-toggle" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="main-nav">☰</button>
             <a href="accueil.html">Accueil</a>
             <a href="formations.html">Formations</a>
             <a href="equipe.html">Équipe</a>
             <a href="vie-etudiante.html">Vie étudiante</a>
             <a href="quiz.html">Quiz</a>
+            <a href="partenariats.html">Partenariats</a>
+            <a href="admissions.html">Admissions</a>
             <a href="contact.html">Contact</a>
+            <a href="a-propos.html">À propos</a>
         </nav>
     </header>
 
@@ -61,6 +65,15 @@
                     <h3>Espaces de travail</h3>
                     <p>Des espaces d’étude et de coworking modernes, adaptés au travail individuel et collaboratif.</p>
                 </article>
+            </div>
+        </section>
+
+        <!-- Campus Hotspots Interactive Map -->
+        <section class="student-section campus-hotspots">
+            <h2>Découvrez le campus</h2>
+            <p>Explorez les différents espaces et services du campus en cliquant sur les points d'intérêt.</p>
+            <div class="campus-map-container">
+                <img src="../data/Efrei-campus.jpg" alt="Plan du campus EFREI" class="campus-map">
             </div>
         </section>
 
@@ -272,6 +285,7 @@
                     <li><a href="vie-etudiante.html">Vie étudiante</a></li>
                     <li><a href="quiz.html">Quiz</a></li>
                     <li><a href="contact.html">Contact</a></li>
+                    <li><a href="a-propos.html">À propos</a></li>
                 </ul>
             </div>
             <div class="footer-section">
@@ -283,10 +297,10 @@
             <div class="footer-section">
                 <h4>Réseaux sociaux</h4>
                 <div class="social-links">
-                    <a href="https://www.facebook.com/EfreiParis" target="_blank"><i class="fab fa-facebook"></i></a>
-                    <a href="https://twitter.com/efrei_paris" target="_blank"><i class="fab fa-twitter"></i></a>
-                    <a href="https://www.linkedin.com/school/efrei/" target="_blank"><i class="fab fa-linkedin"></i></a>
-                    <a href="https://www.instagram.com/efrei_paris/" target="_blank"><i class="fab fa-instagram"></i></a>
+                    <a href="https://www.facebook.com/EfreiParis" target="_blank" aria-label="Suivre EFREI sur Facebook"><i class="fab fa-facebook"></i></a>
+                    <a href="https://twitter.com/efrei_paris" target="_blank" aria-label="Suivre EFREI sur Twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="https://www.linkedin.com/school/efrei/" target="_blank" aria-label="Suivre EFREI sur LinkedIn"><i class="fab fa-linkedin"></i></a>
+                    <a href="https://www.instagram.com/efrei_paris/" target="_blank" aria-label="Suivre EFREI sur Instagram"><i class="fab fa-instagram"></i></a>
                 </div>
             </div>
         </div>
@@ -316,6 +330,8 @@
         </form>
     </div>
 
+    <script src="../js/navigation.js"></script>
+    <script src="../js/campus-projects.js"></script>
     <script src="../js/chatbot.js"></script>
 </body>
 </html>

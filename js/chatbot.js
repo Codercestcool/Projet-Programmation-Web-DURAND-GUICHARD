@@ -1,127 +1,290 @@
-// ==================== CHATBOT EFREI ====================
-// Simple chatbot with JSON-based responses, no API calls
-// Works entirely in browser
+// Chatbot v2 - JSON-driven, scoring, localStorage, accessible
 
-document.addEventListener('DOMContentLoaded', function() {
-    // Chatbot data - fallback if JSON fetch fails
-    const chatbotData = {
-        "formations": {
-            "keywords": ["formation", "formations", "bachelor", "ingénieur", "cycle ingénieur", "spécialisation", "programme", "cursus", "diplôme"],
-            "answer": "La page Formations présente le Bachelor Informatique, le cycle ingénieur et les spécialisations comme la cybersécurité, la data, l'IA et le développement web. Chaque programme offre des compétences pratiques et théoriques alignées avec l'industrie."
-        },
-        "equipe": {
-            "keywords": ["équipe", "enseignant", "prof", "professeur", "intervenant", "responsable", "personnel", "staff"],
-            "answer": "La page Équipe présente les enseignants, intervenants et responsables pédagogiques du département informatique. Nous avons des experts en développement web, cybersécurité, data science, et bien d'autres domaines."
-        },
-        "vie_etudiante": {
-            "keywords": ["vie étudiante", "club", "clubs", "association", "associations", "campus", "projet étudiant", "événement", "activité", "vie campus"],
-            "answer": "La page Vie étudiante présente le campus, les plus de 60 associations et clubs, les événements et les projets étudiants. Vous y découvrirez les clubs tech, sportifs, culturels, entrepreneurship et bien plus !"
-        },
-        "contact": {
-            "keywords": ["contact", "adresse", "email", "mail", "téléphone", "villejuif", "lieu", "coordonnées", "nous contacter"],
-            "answer": "Vous pouvez contacter EFREI à l'adresse 30-32 avenue de la République, 94800 Villejuif. Téléphone: +33 1 88 28 90 01. Email: admissions@efrei.fr. Vous pouvez aussi remplir le formulaire de contact sur la page Contact."
-        },
-        "quiz": {
-            "keywords": ["quiz", "question", "jeu", "javascript", "test", "orientation", "parcours"],
-            "answer": "La page Quiz propose une activité interactive en JavaScript pour découvrir quel parcours informatique vous correspond le mieux. Testez vos préférences et trouvez votre formation idéale !"
-        },
-        "accueil": {
-            "keywords": ["accueil", "bienvenue", "accueil", "présentation", "page d'accueil", "home"],
-            "answer": "Bienvenue sur le site d'EFREI ! Découvrez nos formations, notre équipe, la vie étudiante et bien plus. N'hésitez pas à explorer les différentes pages du site."
-        },
-        "default": {
-            "answer": "Je n'ai pas bien compris votre question. Vous pouvez me demander des informations sur : Formations, Équipe, Vie étudiante, Contact, Quiz, ou Accueil. Essayez !"
-        }
-    };
-
-    // Initialize chatbot
-    initChatbot(chatbotData);
+document.addEventListener('DOMContentLoaded', async () => {
+    const defaultData = await loadChatbotData();
+    initChatbot(defaultData);
 });
 
-function initChatbot(chatbotData) {
-    const chatbotBubble = document.getElementById('chatbot-bubble');
-    const chatbotContainer = document.getElementById('chatbot-container');
-    const chatbotClose = document.getElementById('chatbot-close');
-    const chatbotForm = document.getElementById('chatbot-form');
-    const chatbotInput = document.getElementById('chatbot-input');
-    const chatbotMessages = document.getElementById('chatbot-messages');
-    const quickButtons = document.querySelectorAll('.chatbot-quick-btn');
-
-    if (!chatbotBubble) return; // Chatbot not present on this page
-
-    // Toggle chatbot
-    chatbotBubble.addEventListener('click', () => {
-        chatbotContainer.classList.toggle('active');
-        if (chatbotContainer.classList.contains('active')) {
-            chatbotInput.focus();
+async function loadChatbotData() {
+    const fallback = {};
+    try {
+        const resp = await fetch('../data/chatbot.json', {cache: 'no-store'});
+        if (!resp.ok) throw new Error('Network response not ok');
+        const data = await resp.json();
+        return data;
+    } catch (e) {
+        try {
+            const local = await fetch('./data/chatbot.json');
+            if (local.ok) return await local.json();
+        } catch (e2) {
+            // ignore
         }
-    });
+        return fallback;
+    }
+}
 
-    chatbotClose.addEventListener('click', () => {
-        chatbotContainer.classList.remove('active');
-    });
+function initChatbot(data) {
+    const bubble = document.getElementById('chatbot-bubble');
+    const container = document.getElementById('chatbot-container');
+    const closeBtn = document.getElementById('chatbot-close');
+    const messagesEl = document.getElementById('chatbot-messages');
+    const form = document.getElementById('chatbot-form');
+    const input = document.getElementById('chatbot-input');
+    const quickArea = document.querySelector('.chatbot-quick-buttons');
 
-    // Send message on form submit
-    chatbotForm.addEventListener('submit', (e) => {
-        e.preventDefault();
-        const message = chatbotInput.value.trim();
-        if (message) {
-            sendMessage(message, chatbotData, chatbotMessages, chatbotInput);
-        }
-    });
+    if (!bubble || !container || !messagesEl || !form || !input) return;
 
-    // Quick buttons
-    quickButtons.forEach(btn => {
-        btn.addEventListener('click', () => {
-            const question = btn.getAttribute('data-question');
-            sendMessage(question, chatbotData, chatbotMessages, chatbotInput);
+    // Add aria-labels if not present
+    if (!messagesEl.getAttribute('aria-live')) {
+        messagesEl.setAttribute('aria-live', 'polite');
+        messagesEl.setAttribute('aria-label', 'Messages du chatbot');
+    }
+    if (!input.getAttribute('aria-label')) {
+        input.setAttribute('aria-label', 'Posez votre question à l\'assistant EFREI');
+    }
+
+    // Render top-level quick replies (from JSON quick_replies)
+    renderTopQuickReplies(data, quickArea);
+
+    // Restore history
+    const history = loadHistory();
+    if (history && history.length) {
+        history.forEach(item => renderMessage(item, messagesEl));
+        messagesEl.scrollTop = messagesEl.scrollHeight;
+    } else if (data.meta && data.meta.welcome) {
+        delayedBotMessage(data.meta.welcome, data, messagesEl);
+    }
+
+    // Add clear button to header
+    const header = container.querySelector('.chatbot-header');
+    if (header && !document.getElementById('chatbot-clear')) {
+        const clear = document.createElement('button');
+        clear.id = 'chatbot-clear';
+        clear.type = 'button';
+        clear.textContent = 'Effacer';
+        clear.style.marginRight = '8px';
+        clear.addEventListener('click', () => {
+            if (confirm('Effacer la conversation ?')) {
+                clearHistory();
+                messagesEl.innerHTML = '';
+            }
         });
+        header.insertBefore(clear, header.firstChild);
+    }
+
+    // Toggle
+    bubble.addEventListener('click', () => {
+        container.classList.toggle('active');
+        if (container.classList.contains('active')) input.focus();
+    });
+
+    closeBtn && closeBtn.addEventListener('click', () => container.classList.remove('active'));
+
+    // Escape to close
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') container.classList.remove('active');
+    });
+
+    // Submit
+    form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const text = input.value.trim();
+        if (!text) return;
+        handleUserMessage(text, data, messagesEl, input);
+    });
+
+    // Quick replies dynamic handler (delegation)
+    quickArea && quickArea.addEventListener('click', (e) => {
+        const btn = e.target.closest('button[data-question]');
+        if (!btn) return;
+        const q = btn.getAttribute('data-question');
+        if (!q) return;
+        handleUserMessage(q, data, messagesEl, input);
     });
 }
 
-function sendMessage(message, chatbotData, messagesContainer, inputField) {
-    // Add user message
-    addMessage(message, 'user', messagesContainer);
-    
-    // Clear input
-    inputField.value = '';
-    
-    // Get bot response
-    const response = getBotResponse(message, chatbotData);
-    
-    // Add bot message with slight delay
-    setTimeout(() => {
-        addMessage(response, 'bot', messagesContainer);
-    }, 300);
+function renderTopQuickReplies(data, area) {
+    if (!area) return;
+    area.innerHTML = '';
+    const top = data.quick_replies || [];
+    top.forEach((item, idx) => {
+        const btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = 'chatbot-quick-btn';
+        btn.setAttribute('data-question', item.question || item.label || '');
+        btn.setAttribute('aria-label', `Poser la question: ${item.label || item.question || ''}`);
+        btn.textContent = (item.icon ? item.icon + ' ' : '') + (item.label || item.question || '');
+        area.appendChild(btn);
+    });
 }
 
-function addMessage(text, sender, container) {
-    const messageDiv = document.createElement('div');
-    messageDiv.className = `chatbot-message ${sender}-message`;
-    messageDiv.textContent = text;
-    container.appendChild(messageDiv);
-    
-    // Scroll to bottom
+function handleUserMessage(text, data, messagesEl, inputEl) {
+    const user = {sender: 'user', text: text, ts: Date.now()};
+    appendAndSave(user, messagesEl);
+    inputEl.value = '';
+
+    const best = findBestMatch(text, data);
+
+    if (!best) {
+        // fallback
+        const fallbacks = data.fallbacks || (data.default && data.default.suggestions) || [];
+        delayedBotMessage((data.default && data.default.answer) || (fallbacks[0] || 'Désolé, je n’ai pas compris.'), data, messagesEl);
+        return;
+    }
+
+    // Build bot content
+    let botText = best.answer || '';
+    delayedBotMessage(botText, data, messagesEl, best);
+}
+
+function findBestMatch(input, data) {
+    if (!input) return null;
+    const clean = normalizeText(input);
+    const tokens = clean.split(/\s+/).filter(Boolean);
+    const keys = Object.keys(data).filter(k => !['meta','quick_replies','fallbacks','default'].includes(k));
+    let best = null;
+    let bestScore = 0;
+
+    for (const key of keys) {
+        const entry = data[key];
+        const keywords = (entry && entry.keywords) || [];
+        let score = 0;
+        for (const kw of keywords) {
+            const k = normalizeText(kw);
+            if (!k) continue;
+            // exact phrase
+            if (clean.includes(k)) {
+                const weight = Math.max(1, k.split(/\s+/).length);
+                score += 2 * weight;
+            } else {
+                // partial token matches
+                const kwTokens = k.split(/\s+/).filter(Boolean);
+                for (const t of kwTokens) {
+                    if (tokens.includes(t)) score += 1;
+                }
+            }
+        }
+        if (score > bestScore) {
+            bestScore = score;
+            best = entry;
+        }
+    }
+
+    // require minimal score
+    if (bestScore <= 0) return null;
+    return best;
+}
+
+function normalizeText(s) {
+    return s.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/[^a-z0-9\s-]/g, ' ').replace(/\s+/g, ' ').trim();
+}
+
+function delayedBotMessage(text, data, messagesEl, entry) {
+    showTypingIndicator(messagesEl);
+    setTimeout(() => {
+        removeTypingIndicator(messagesEl);
+        const bot = {sender: 'bot', text: text, ts: Date.now()};
+        appendAndSave(bot, messagesEl, entry);
+        // after message, if entry has suggestions or route/cta, render them
+        if (entry) {
+            if (entry.suggestions && entry.suggestions.length) renderSuggestionButtons(entry.suggestions, messagesEl);
+            if (entry.route || entry.cta) renderRouteButton(entry, messagesEl);
+        } else if (data && data.default && data.default.suggestions) {
+            renderSuggestionButtons(data.default.suggestions, messagesEl);
+        }
+    }, 400);
+}
+
+function showTypingIndicator(container) {
+    const el = document.createElement('div');
+    el.className = 'chatbot-message bot-message typing';
+    el.setAttribute('aria-live', 'polite');
+    el.textContent = 'Assistant écrit...';
+    el.dataset.typing = '1';
+    container.appendChild(el);
     container.scrollTop = container.scrollHeight;
 }
 
-function getBotResponse(userInput, chatbotData) {
-    // Normalize input
-    const input = userInput.toLowerCase().trim();
-    
-    // Check each category
-    for (const [key, data] of Object.entries(chatbotData)) {
-        if (key === 'default') continue;
-        
-        // Check if any keyword matches
-        const keywords = data.keywords || [];
-        for (const keyword of keywords) {
-            if (input.includes(keyword)) {
-                return data.answer;
-            }
-        }
-    }
-    
-    // Default response if no match
-    return chatbotData.default.answer;
+function removeTypingIndicator(container) {
+    const el = container.querySelector('[data-typing="1"]');
+    if (el) el.remove();
 }
+
+function renderSuggestionButtons(suggestions, container) {
+    if (!suggestions || !suggestions.length) return;
+    const wrap = document.createElement('div');
+    wrap.className = 'chatbot-suggestions';
+    suggestions.slice(0,5).forEach(s => {
+        const b = document.createElement('button');
+        b.type = 'button';
+        b.className = 'chatbot-suggestion-btn';
+        b.setAttribute('data-question', s);
+        b.textContent = s;
+        b.addEventListener('click', () => {
+            const input = document.getElementById('chatbot-input');
+            handleUserMessage(s, window._efrei_chatbot_data || {}, document.getElementById('chatbot-messages'), input);
+        });
+        wrap.appendChild(b);
+    });
+    container.appendChild(wrap);
+    container.scrollTop = container.scrollHeight;
+}
+
+function renderRouteButton(entry, container) {
+    const div = document.createElement('div');
+    div.className = 'chatbot-route';
+    if (entry.route || entry.cta) {
+        const a = document.createElement('a');
+        a.href = entry.route || '#';
+        a.rel = 'noopener noreferrer';
+        a.textContent = entry.cta || 'Voir';
+        a.className = 'chatbot-cta';
+        div.appendChild(a);
+        container.appendChild(div);
+        container.scrollTop = container.scrollHeight;
+    }
+}
+
+function appendAndSave(item, container, entryMeta) {
+    renderMessage(item, container, entryMeta);
+    saveToHistory(item);
+    container.scrollTop = container.scrollHeight;
+}
+
+function renderMessage(item, container, entryMeta) {
+    const div = document.createElement('div');
+    div.className = 'chatbot-message ' + (item.sender === 'user' ? 'user-message' : 'bot-message');
+    div.setAttribute('data-ts', item.ts || Date.now());
+    const textNode = document.createTextNode(item.text || '');
+    div.appendChild(textNode);
+    container.appendChild(div);
+}
+
+// LocalStorage history helpers
+const HISTORY_KEY = 'efrei_chat_history_v2';
+function loadHistory() {
+    try {
+        const raw = localStorage.getItem(HISTORY_KEY);
+        if (!raw) return [];
+        const parsed = JSON.parse(raw);
+        return Array.isArray(parsed) ? parsed : [];
+    } catch (e) { return []; }
+}
+
+function saveToHistory(item) {
+    try {
+        const cur = loadHistory();
+        cur.push(item);
+        // limit size
+        if (cur.length > 200) cur.splice(0, cur.length - 200);
+        localStorage.setItem(HISTORY_KEY, JSON.stringify(cur));
+    } catch (e) { /* ignore */ }
+}
+
+function clearHistory() {
+    try { localStorage.removeItem(HISTORY_KEY); } catch (e) {}
+}
+
+// Expose helper for suggestions to access data
+window._efrei_chatbot_data = window._efrei_chatbot_data || {};
+

@@ -1,0 +1,26 @@
+[
+  {
+    "title": "Journée portes ouvertes",
+    "date": "2026-05-20",
+    "type": "JPO",
+    "location": "Campus Villejuif",
+    "description": "Présentation des formations, rencontres avec les enseignants et visites du campus.",
+    "link": "contact.html"
+  },
+  {
+    "title": "Atelier IA : Débuter avec Python",
+    "date": "2026-06-10",
+    "type": "Atelier",
+    "location": "Lab IA - Bâtiment A",
+    "description": "Atelier pratique d'initiation à Python et aux concepts de ML.",
+    "link": "formations.html"
+  },
+  {
+    "title": "Conférence Cybersécurité",
+    "date": "2026-07-02",
+    "type": "Conférence",
+    "location": "Amphithéâtre",
+    "description": "Intervention d'un expert sur les bonnes pratiques et tendances en cybersécurité.",
+    "link": "contact.html"
+  }
+]
