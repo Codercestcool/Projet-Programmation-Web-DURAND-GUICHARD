@@ -60,9 +60,10 @@ function initChatbot(data) {
     if (header && !document.getElementById('chatbot-clear')) {
         const clear = document.createElement('button');
         clear.id = 'chatbot-clear';
+        clear.className = 'chatbot-clear-btn';
         clear.type = 'button';
         clear.textContent = 'Effacer';
-        clear.style.marginRight = '8px';
+        clear.title = 'Effacer la conversation';
         clear.addEventListener('click', () => {
             if (confirm('Effacer la conversation ?')) {
                 clearHistory();

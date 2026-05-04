@@ -51,8 +51,6 @@ document.addEventListener('DOMContentLoaded', () => {
     hotspots.forEach((spot, idx) => {
         const hotspot = document.createElement('button');
         hotspot.className = 'campus-hotspot';
-        hotspot.style.left = spot.x + '%';
-        hotspot.style.top = spot.y + '%';
         hotspot.setAttribute('data-hotspot', idx);
         hotspot.setAttribute('title', spot.title);
         hotspot.setAttribute('aria-label', `${spot.title}: ${spot.description}`);
@@ -68,6 +66,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const wrapper = document.createElement('div');
         wrapper.className = 'hotspot-wrapper';
+        wrapper.style.left = spot.x + '%';
+        wrapper.style.top = spot.y + '%';
         wrapper.appendChild(hotspot);
         wrapper.appendChild(tooltip);
 
@@ -101,5 +101,9 @@ document.addEventListener('DOMContentLoaded', () => {
         overlay.appendChild(wrapper);
     });
 
-    campusSection.appendChild(overlay);
+    // Insert overlay into the map container instead of the section
+    const mapContainer = campusSection.querySelector('.campus-map-container');
+    if (mapContainer) {
+        mapContainer.appendChild(overlay);
+    }
 });
