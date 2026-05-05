@@ -23,6 +23,22 @@
     color: #ffffff;
 }
 
+@media (max-width: 768px) {
+    .about-project-page main,
+    .partners-page main,
+    .admissions-page main {
+        padding: 120px 15px 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .about-project-page main,
+    .partners-page main,
+    .admissions-page main {
+        padding: 100px 10px 20px;
+    }
+}
+
 .about-project-page .about-hero,
 .partners-page .partners-hero,
 .admissions-page .partners-hero,
@@ -37,6 +53,28 @@
     margin: 0 0 40px;
 }
 
+@media (max-width: 768px) {
+    .about-project-page .about-hero,
+    .partners-page .partners-hero,
+    .admissions-page .partners-hero,
+    .admissions-page .admissions-hero {
+        padding: 28px 22px;
+        border-radius: 16px;
+        margin-bottom: 30px;
+    }
+}
+
+@media (max-width: 480px) {
+    .about-project-page .about-hero,
+    .partners-page .partners-hero,
+    .admissions-page .partners-hero,
+    .admissions-page .admissions-hero {
+        padding: 20px 16px;
+        border-radius: 12px;
+        margin-bottom: 20px;
+    }
+}
+
 .about-project-page .about-hero h1,
 .partners-page .partners-hero h1,
 .admissions-page .partners-hero h1,
@@ -44,6 +82,25 @@
     margin: 0 0 14px;
     font-size: 2.8rem;
     line-height: 1.15;
+}
+
+@media (max-width: 768px) {
+    .about-project-page .about-hero h1,
+    .partners-page .partners-hero h1,
+    .admissions-page .partners-hero h1,
+    .admissions-page .admissions-hero h1 {
+        font-size: 2.2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .about-project-page .about-hero h1,
+    .partners-page .partners-hero h1,
+    .admissions-page .partners-hero h1,
+    .admissions-page .admissions-hero h1 {
+        font-size: 1.8rem;
+        margin-bottom: 10px;
+    }
 }
 
 .about-project-page .about-hero .lead,
@@ -96,6 +153,46 @@
     font-weight: 700;
 }
 
+@media (max-width: 768px) {
+    .about-project-page .member-grid h2,
+    .about-project-page .process-timeline h2,
+    .about-project-page .choices h2,
+    .about-project-page .technologies h2,
+    .about-project-page .quality-grid h2,
+    .about-project-page .mockup-preview-grid h2,
+    .partners-page .partners-metrics h2,
+    .partners-page .career-timeline h2,
+    .partners-page .metiers h2,
+    .partners-page .relations h2,
+    .admissions-page .admissions-paths h2,
+    .admissions-page .application-steps h2,
+    .admissions-page .faq-section h2,
+    .admissions-page .campus-access h2 {
+        font-size: 1.5rem;
+        margin-bottom: 18px;
+    }
+}
+
+@media (max-width: 480px) {
+    .about-project-page .member-grid h2,
+    .about-project-page .process-timeline h2,
+    .about-project-page .choices h2,
+    .about-project-page .technologies h2,
+    .about-project-page .quality-grid h2,
+    .about-project-page .mockup-preview-grid h2,
+    .partners-page .partners-metrics h2,
+    .partners-page .career-timeline h2,
+    .partners-page .metiers h2,
+    .partners-page .relations h2,
+    .admissions-page .admissions-paths h2,
+    .admissions-page .application-steps h2,
+    .admissions-page .faq-section h2,
+    .admissions-page .campus-access h2 {
+        font-size: 1.3rem;
+        margin-bottom: 14px;
+    }
+}
+
 .about-project-page .members,
 .about-project-page .timeline-grid,
 .about-project-page .mockups,
@@ -105,6 +202,30 @@
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
     gap: 18px;
+}
+
+@media (max-width: 768px) {
+    .about-project-page .members,
+    .about-project-page .timeline-grid,
+    .about-project-page .mockups,
+    .partners-page .metrics-grid,
+    .admissions-page .paths-grid,
+    .partners-page .company-cards {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 14px;
+    }
+}
+
+@media (max-width: 480px) {
+    .about-project-page .members,
+    .about-project-page .timeline-grid,
+    .about-project-page .mockups,
+    .partners-page .metrics-grid,
+    .admissions-page .paths-grid,
+    .partners-page .company-cards {
+        grid-template-columns: 1fr;
+        gap: 12px;
+    }
 }
 
 /* Card styles */
@@ -141,6 +262,14 @@
     height: 180px;
     object-fit: cover;
     margin-bottom: 16px;
+}
+
+@media (max-width: 480px) {
+    .about-project-page .member-card img,
+    .about-project-page .mockup-card img {
+        height: 140px;
+        margin-bottom: 12px;
+    }
 }
 
 .about-project-page .member-card h3,
@@ -196,6 +325,18 @@
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
     gap: 12px;
+}
+
+@media (max-width: 768px) {
+    .about-project-page .quality-grid ul {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 480px) {
+    .about-project-page .quality-grid ul {
+        grid-template-columns: 1fr;
+    }
 }
 
 .about-project-page .quality-grid ul li,
@@ -385,6 +526,20 @@
     gap: 24px !important;
 }
 
+@media (max-width: 768px) {
+    #agenda-cards {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 16px !important;
+    }
+}
+
+@media (max-width: 480px) {
+    #agenda-cards {
+        grid-template-columns: 1fr !important;
+        gap: 12px !important;
+    }
+}
+
 .event-card {
     background: rgba(255, 255, 255, 0.06);
     border: 1px solid rgba(255, 255, 255, 0.12);
@@ -394,6 +549,20 @@
     display: flex;
     flex-direction: column;
     gap: 12px;
+}
+
+@media (max-width: 480px) {
+    .event-card {
+        padding: 16px;
+    }
+
+    .event-card h3 {
+        font-size: 1.1rem;
+    }
+
+    .event-card p {
+        font-size: 0.9rem;
+    }
 }
 
 .event-card:hover {
