@@ -19,10 +19,10 @@
             <a href="formations.html">Formations</a>
             <a href="equipe.html">Équipe</a>
             <a href="vie-etudiante.html">Vie étudiante</a>
-            <a href="quiz.html">Quiz</a>
             <a href="partenariats.html">Partenariats</a>
             <a href="admissions.html">Admissions</a>
             <a href="contact.html">Contact</a>
+            <a href="quiz.html">Quiz</a>
             <a href="a-propos.html">À propos</a>
             <button class="nav-toggle" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="main-nav">☰</button>
         </nav>
@@ -195,6 +195,27 @@
             <p>&copy; 2026 - DURAND Gabriel - GUICHARD Louis</p>
         </div>
     </footer>
+
+    <!-- Chatbot -->
+    <button id="chatbot-bubble" title="Assistant EFREI">💬</button>
+    <div id="chatbot-container">
+        <div class="chatbot-header">
+            <h3>Assistant EFREI</h3>
+            <button id="chatbot-close">&times;</button>
+        </div>
+        <div id="chatbot-messages"></div>
+        <div class="chatbot-quick-buttons">
+            <button class="chatbot-quick-btn" data-question="Parlez-moi des formations">Formations</button>
+            <button class="chatbot-quick-btn" data-question="Qui sont les enseignants ?">Équipe</button>
+            <button class="chatbot-quick-btn" data-question="Quelle est la vie étudiante ?">Vie étudiante</button>
+            <button class="chatbot-quick-btn" data-question="Comment vous contacter ?">Contact</button>
+            <button class="chatbot-quick-btn" data-question="Y a-t-il un quiz ?">Quiz</button>
+        </div>
+        <form id="chatbot-form">
+            <input type="text" id="chatbot-input" placeholder="Votre question..." required>
+            <button type="submit" class="chatbot-send-btn">→</button>
+        </form>
+    </div>
 
     <script src="../js/navigation.js"></script>
     <script src="../js/partners.js"></script>
