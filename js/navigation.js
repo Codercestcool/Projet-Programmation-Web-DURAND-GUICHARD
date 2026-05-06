@@ -58,7 +58,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 }
             });
 
-            // Ensure the toggle (hamburger) is visible on small viewports
+            // Ensure proper display on resize (CSS media queries handle it, but JS ensures toggle works)
             const updateToggleVisibility = () => {
                 try {
                     if (window.innerWidth <= 900) {
