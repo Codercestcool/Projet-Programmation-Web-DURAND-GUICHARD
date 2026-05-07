@@ -1,12 +1,12 @@
 {
   "meta": {
     "name": "Assistant EFREI Informatique",
-    "version": "2.0",
+    "version": "2.1",
     "language": "fr",
-    "welcome": "Bonjour ! Je peux t'aider à explorer les formations, la vie étudiante, les admissions, les projets, les partenariats ou le quiz d'orientation.",
-    "tone": "clair, étudiant, professionnel",
-    "note": "Structure compatible avec le JS actuel via keywords + answer. Les champs route, cta, suggestions et related sont prévus pour une version JS améliorée."
+    "welcome": "Bonjour ! Je peux t'aider à découvrir les formations, les admissions, la vie étudiante, les débouchés, le campus ou le quiz d'orientation.",
+    "tone": "clair, étudiant, professionnel"
   },
+
   "formations": {
     "title": "Formations",
     "keywords": [
@@ -27,20 +27,43 @@
       "post bac",
       "post-bac"
     ],
-    "answer": "Le département informatique présente plusieurs parcours : Bachelor, cycle ingénieur et spécialisations. Tu peux comparer les objectifs, les matières, les modalités et les débouchés sur la page Formations.",
+    "answer": "Le département informatique propose plusieurs parcours : Bachelor, cycle ingénieur et spécialisations. Les formations couvrent notamment le développement, les systèmes, les réseaux, la cybersécurité, la data et l'intelligence artificielle.",
     "route": "formations.html",
     "cta": "Voir les formations",
     "suggestions": [
       "Quelle différence entre Bachelor et cycle ingénieur ?",
       "Quelles matières en informatique ?",
       "Quels débouchés après la formation ?"
-    ],
-    "related": [
-      "bachelor",
-      "cycle_ingenieur",
-      "debouches"
     ]
   },
+
+  "difference_bachelor_cycle": {
+    "title": "Différence Bachelor et cycle ingénieur",
+    "keywords": [
+      "difference bachelor cycle ingenieur",
+      "difference entre bachelor et cycle ingenieur",
+      "différence bachelor cycle ingénieur",
+      "différence entre bachelor et cycle ingénieur",
+      "bachelor ou cycle ingenieur",
+      "bachelor ou cycle ingénieur",
+      "bachelor ou ingenieur",
+      "bachelor ou ingénieur",
+      "choisir bachelor",
+      "choisir cycle ingenieur",
+      "choisir cycle ingénieur",
+      "quelle différence entre bachelor et cycle ingénieur",
+      "quelle difference entre bachelor et cycle ingenieur"
+    ],
+    "answer": "Le Bachelor est un parcours bac+3 plus concret et professionnalisant, idéal pour acquérir rapidement des compétences pratiques. Le cycle ingénieur est un parcours bac+5 plus approfondi, avec davantage d'expertise technique, de gestion de projet, d'innovation et de spécialisation.",
+    "route": "formations.html",
+    "cta": "Comparer les formations",
+    "suggestions": [
+      "Quels métiers après un Bachelor ?",
+      "Quels débouchés après la formation ?",
+      "Faire le quiz"
+    ]
+  },
+
   "bachelor": {
     "title": "Bachelor informatique",
     "keywords": [
@@ -58,20 +81,16 @@
       "cybersecurite",
       "cybersécurité"
     ],
-    "answer": "Le Bachelor est pensé pour acquérir rapidement des bases solides et pratiques : développement web/mobile, bases de données, systèmes, réseaux, cybersécurité et projets concrets. C'est un bon choix pour viser une insertion progressive ou poursuivre vers un niveau supérieur.",
+    "answer": "Le Bachelor permet d'acquérir des bases solides et pratiques en informatique : développement web/mobile, bases de données, systèmes, réseaux, cybersécurité et projets concrets. C'est un bon choix pour entrer progressivement dans le monde professionnel ou poursuivre ses études.",
     "route": "formations.html#bachelor",
     "cta": "Explorer le Bachelor",
     "suggestions": [
       "Quelles compétences en Bachelor ?",
       "Peut-on faire de l'alternance ?",
       "Quels métiers après un Bachelor ?"
-    ],
-    "related": [
-      "formations",
-      "alternance",
-      "debouches"
     ]
   },
+
   "cycle_ingenieur": {
     "title": "Cycle ingénieur",
     "keywords": [
@@ -89,20 +108,16 @@
       "mastere",
       "mastère"
     ],
-    "answer": "Le cycle ingénieur met l'accent sur l'expertise technique, la gestion de projet, l'innovation et les spécialisations : logiciel, systèmes d'information, data, IA, sécurité, réseaux ou systèmes embarqués selon le parcours présenté.",
+    "answer": "Le cycle ingénieur forme des profils bac+5 capables de concevoir, piloter et sécuriser des projets informatiques complexes. Il permet de se spécialiser dans des domaines comme le logiciel, la data, l'IA, les systèmes d'information, les réseaux ou la cybersécurité.",
     "route": "formations.html#cycle-ingenieur",
     "cta": "Voir le cycle ingénieur",
     "suggestions": [
       "Quelles spécialisations choisir ?",
       "Quels projets en cycle ingénieur ?",
-      "Quels stages sont prévus ?"
-    ],
-    "related": [
-      "data_ia",
-      "cybersecurite",
-      "stages"
+      "Quels métiers après la formation ?"
     ]
   },
+
   "cybersecurite": {
     "title": "Cybersécurité et réseaux",
     "keywords": [
@@ -120,20 +135,16 @@
       "soc",
       "cloud security"
     ],
-    "answer": "La cybersécurité couvre la protection des systèmes, les réseaux, l'analyse des risques, les bonnes pratiques de sécurité et des projets de type CTF ou audit. C'est une thématique forte à valoriser dans les formations et les clubs tech.",
+    "answer": "La cybersécurité consiste à protéger les systèmes, les réseaux et les données. Les étudiants peuvent découvrir des notions comme l'audit, la gestion des risques, la sécurité réseau, les CTF ou encore l'analyse de vulnérabilités.",
     "route": "formations.html#cybersecurite",
     "cta": "Découvrir la cybersécurité",
     "suggestions": [
-      "Y a-t-il des clubs cyber ?",
       "Quels métiers en cybersécurité ?",
-      "Quels projets cyber présenter ?"
-    ],
-    "related": [
-      "clubs_tech",
-      "debouches",
-      "projets_etudiants"
+      "Y a-t-il des clubs cyber ?",
+      "Quels projets étudiants peut-on faire ?"
     ]
   },
+
   "data_ia": {
     "title": "Data et intelligence artificielle",
     "keywords": [
@@ -149,20 +160,16 @@
       "python",
       "science des données"
     ],
-    "answer": "La data et l'IA regroupent l'analyse de données, les algorithmes, le machine learning, la visualisation et les projets intelligents. C'est une bonne section à relier aux projets étudiants, aux débouchés et au quiz d'orientation.",
+    "answer": "La data et l'intelligence artificielle regroupent l'analyse de données, les algorithmes, le machine learning, la visualisation et les projets intelligents. Ce domaine mène vers des métiers comme data analyst, data scientist ou ingénieur IA.",
     "route": "formations.html#data-ia",
     "cta": "Explorer Data & IA",
     "suggestions": [
       "Quels métiers en data ?",
-      "Quels projets IA ajouter au site ?",
-      "Quelle formation choisir pour l'IA ?"
-    ],
-    "related": [
-      "projets_etudiants",
-      "debouches",
-      "quiz"
+      "Quelle formation choisir pour l'IA ?",
+      "Quels projets en IA ?"
     ]
   },
+
   "developpement": {
     "title": "Développement web, logiciel et mobile",
     "keywords": [
@@ -184,20 +191,16 @@
       "css",
       "javascript"
     ],
-    "answer": "Le développement est au cœur du département : interfaces web, applications mobiles, bases de données, architecture logicielle et projets collaboratifs. Pour le site, c'est aussi une bonne occasion de montrer vos compétences en HTML, CSS et JavaScript sans framework.",
+    "answer": "Le développement est au cœur de l'informatique : création d'interfaces web, applications mobiles, logiciels, bases de données et projets collaboratifs. C'est un domaine très présent dans les formations du département.",
     "route": "formations.html#developpement",
     "cta": "Voir les parcours dev",
     "suggestions": [
-      "Quels langages mettre en avant ?",
-      "Quels projets étudiants montrer ?",
-      "Comment améliorer l'interface ?"
-    ],
-    "related": [
-      "projets_etudiants",
-      "quiz",
-      "formations"
+      "Quels langages apprend-on ?",
+      "Quels projets étudiants peut-on faire ?",
+      "Quels métiers dans le développement ?"
     ]
   },
+
   "equipe": {
     "title": "Équipe enseignante et recherche",
     "keywords": [
@@ -218,19 +221,16 @@
       "pédagogique",
       "staff"
     ],
-    "answer": "La page Équipe présente les enseignants, intervenants et domaines d'expertise : développement, cybersécurité, data, IA, systèmes et réseaux. Pour renforcer la page, ajoutez des cartes avec spécialité, rôle, mini-bio et domaines de recherche.",
+    "answer": "La page Équipe présente les enseignants, intervenants et domaines d'expertise du département : développement, cybersécurité, data, IA, systèmes et réseaux.",
     "route": "equipe.html",
     "cta": "Rencontrer l'équipe",
     "suggestions": [
-      "Quels domaines de recherche afficher ?",
-      "Comment présenter les enseignants ?",
-      "Faut-il ajouter des publications ?"
-    ],
-    "related": [
-      "recherche",
-      "formations"
+      "Quels domaines de recherche existent ?",
+      "Qui enseigne l'informatique ?",
+      "Quelles spécialités sont représentées ?"
     ]
   },
+
   "recherche": {
     "title": "Recherche et expertise",
     "keywords": [
@@ -246,20 +246,16 @@
       "cyberdefense",
       "innovation"
     ],
-    "answer": "Une section Recherche peut mettre en avant des domaines comme IA, cloud, cybersécurité, big data et systèmes. Même sans vraies publications, vous pouvez créer une zone 'axes d'expertise' propre et crédible.",
+    "answer": "Les domaines de recherche et d'expertise peuvent inclure l'intelligence artificielle, le cloud, la cybersécurité, le big data, les systèmes et les réseaux.",
     "route": "equipe.html#recherche",
     "cta": "Voir les expertises",
     "suggestions": [
-      "Ajouter une section recherche",
-      "Créer des cartes expertise",
-      "Relier recherche et projets étudiants"
-    ],
-    "related": [
-      "equipe",
-      "data_ia",
-      "cybersecurite"
+      "Quels domaines de recherche existent ?",
+      "Quels projets étudiants peut-on faire ?",
+      "Quels métiers en cybersécurité ?"
     ]
   },
+
   "vie_etudiante": {
     "title": "Vie étudiante et campus",
     "keywords": [
@@ -279,20 +275,16 @@
       "étudiant",
       "etudiant"
     ],
-    "answer": "La page Vie étudiante valorise les clubs, les associations, les projets, les événements et les espaces de campus. Pour sortir du lot, ajoutez une galerie filtrable, une carte interactive du campus et des témoignages étudiants.",
+    "answer": "La vie étudiante regroupe les clubs, associations, projets, événements et espaces du campus. C'est une partie importante pour découvrir l'ambiance de l'école au-delà des cours.",
     "route": "vie-etudiante.html",
     "cta": "Explorer la vie étudiante",
     "suggestions": [
       "Quels clubs tech existent ?",
-      "Afficher des projets étudiants",
-      "Ajouter une carte du campus"
-    ],
-    "related": [
-      "clubs_tech",
-      "projets_etudiants",
-      "campus"
+      "Quels projets étudiants peut-on faire ?",
+      "Où se trouve le campus ?"
     ]
   },
+
   "clubs_tech": {
     "title": "Clubs tech",
     "keywords": [
@@ -308,22 +300,20 @@
       "rézo",
       "rezo",
       "hackathon",
-      "association informatique"
+      "association informatique",
+      "clubs",
+      "club"
     ],
-    "answer": "Les clubs tech peuvent devenir une section très différenciante : robotique, réseau, cybersécurité, 3D, e-sport, hackathons, projets open-source. Ajoutez des filtres par thème pour rendre la page plus interactive.",
+    "answer": "Les clubs tech permettent aux étudiants de pratiquer en dehors des cours : programmation, robotique, cybersécurité, hackathons, réseau, e-sport ou projets collaboratifs.",
     "route": "vie-etudiante.html#clubs",
     "cta": "Voir les clubs",
     "suggestions": [
-      "Créer des filtres par club",
-      "Ajouter une galerie projets",
-      "Mettre un événement CTF"
-    ],
-    "related": [
-      "vie_etudiante",
-      "cybersecurite",
-      "projets_etudiants"
+      "Quels projets étudiants peut-on faire ?",
+      "Y a-t-il des clubs cyber ?",
+      "Quels événements sont proposés ?"
     ]
   },
+
   "projets_etudiants": {
     "title": "Projets étudiants",
     "keywords": [
@@ -341,20 +331,16 @@
       "ia",
       "site web"
     ],
-    "answer": "Une galerie de projets étudiants aiderait beaucoup le site : cartes projet, tags, technologies utilisées, bouton 'Voir la démo' et filtre par thème. C'est original et ça montre concrètement le niveau du département.",
+    "answer": "Les projets étudiants permettent de mettre en pratique les compétences apprises : sites web, applications, prototypes IA, projets cyber, robotique ou outils numériques réalisés en groupe.",
     "route": "vie-etudiante.html#projets",
     "cta": "Voir les projets",
     "suggestions": [
-      "Créer une galerie filtrable",
-      "Ajouter des tags techno",
-      "Présenter les meilleurs projets"
-    ],
-    "related": [
-      "developpement",
-      "data_ia",
-      "clubs_tech"
+      "Quels projets en IA ?",
+      "Quels clubs permettent de faire des projets ?",
+      "Quels métiers après la formation ?"
     ]
   },
+
   "partenariats": {
     "title": "Partenariats et professionnalisation",
     "keywords": [
@@ -370,20 +356,16 @@
       "forum",
       "relations entreprises"
     ],
-    "answer": "Une page Partenariats & professionnalisation manque et pourrait vous faire gagner des points : entreprises, alternance, stages, métiers, timeline vers l'emploi et tableau des débouchés.",
+    "answer": "La professionnalisation permet de relier la formation au monde de l'entreprise grâce aux stages, à l'alternance, aux projets, aux forums et aux débouchés métiers.",
     "route": "partenariats.html",
-    "cta": "Créer la page partenariats",
+    "cta": "Voir les partenariats",
     "suggestions": [
-      "Quels métiers après EFREI ?",
-      "Comment présenter l'alternance ?",
-      "Ajouter un tableau des débouchés"
-    ],
-    "related": [
-      "stages",
-      "alternance",
-      "debouches"
+      "Quels métiers après la formation ?",
+      "Peut-on faire de l'alternance ?",
+      "Quels stages sont possibles ?"
     ]
   },
+
   "stages": {
     "title": "Stages",
     "keywords": [
@@ -397,20 +379,16 @@
       "linkedin",
       "recherche de stage"
     ],
-    "answer": "La partie Stages peut expliquer les objectifs, la préparation CV/LinkedIn, les missions typiques et le lien avec les entreprises. Une timeline interactive serait une bonne idée en JavaScript.",
+    "answer": "Les stages permettent aux étudiants de découvrir le monde professionnel, de développer leurs compétences et de préparer leur insertion dans les métiers de l'informatique.",
     "route": "partenariats.html#stages",
     "cta": "Voir les stages",
     "suggestions": [
-      "Ajouter une timeline stages",
-      "Lister des exemples de missions",
-      "Relier aux débouchés"
-    ],
-    "related": [
-      "partenariats",
-      "alternance",
-      "debouches"
+      "Peut-on faire de l'alternance ?",
+      "Quels métiers après la formation ?",
+      "Comment candidater ?"
     ]
   },
+
   "alternance": {
     "title": "Alternance",
     "keywords": [
@@ -426,20 +404,16 @@
       "modalites",
       "modalités"
     ],
-    "answer": "L'alternance peut être expliquée simplement : fonctionnement, avantages, exemples de missions, accompagnement et lien avec les formations. C'est un contenu important pour une page Admissions ou Partenariats.",
+    "answer": "L'alternance permet de partager son temps entre l'école et l'entreprise. C'est une bonne option pour acquérir de l'expérience professionnelle tout en poursuivant sa formation.",
     "route": "partenariats.html#alternance",
     "cta": "Comprendre l'alternance",
     "suggestions": [
-      "Différence initiale/alternance",
-      "Exemples de missions",
-      "Lien avec admissions"
-    ],
-    "related": [
-      "admissions",
-      "formations",
-      "partenariats"
+      "Comment candidater ?",
+      "Quels stages sont possibles ?",
+      "Quels métiers après la formation ?"
     ]
   },
+
   "debouches": {
     "title": "Débouchés métiers",
     "keywords": [
@@ -459,22 +433,25 @@
       "full-stack",
       "administrateur système",
       "ingenieur logiciel",
-      "ingénieur logiciel"
+      "ingénieur logiciel",
+      "quels sont les débouchés",
+      "quels sont les debouches",
+      "quels débouchés après la formation",
+      "quels debouches apres la formation",
+      "métiers après la formation",
+      "metiers apres la formation",
+      "quels métiers après la formation"
     ],
-    "answer": "Les débouchés à mettre en avant : développeur full-stack, ingénieur logiciel, DevOps, data scientist, consultant SI, administrateur systèmes/réseaux, expert cybersécurité ou chef de projet. Un tableau comparatif serait idéal.",
+    "answer": "Les débouchés possibles sont nombreux : développeur full-stack, ingénieur logiciel, DevOps, data scientist, consultant SI, administrateur systèmes/réseaux, expert cybersécurité ou chef de projet.",
     "route": "partenariats.html#debouches",
     "cta": "Voir les débouchés",
     "suggestions": [
-      "Créer un tableau métiers",
-      "Associer métier et formation",
-      "Ajouter des stats visuelles"
-    ],
-    "related": [
-      "formations",
-      "partenariats",
-      "stages"
+      "Quels métiers après un Bachelor ?",
+      "Quels métiers en cybersécurité ?",
+      "Quelle formation choisir ?"
     ]
   },
+
   "admissions": {
     "title": "Admissions",
     "keywords": [
@@ -482,6 +459,8 @@
       "admissions",
       "inscription",
       "candidature",
+      "candidater",
+      "comment candidater",
       "parcoursup",
       "puissance alpha",
       "concours",
@@ -492,20 +471,16 @@
       "frais",
       "scolarité"
     ],
-    "answer": "Une page Admissions & FAQ serait utile : étapes de candidature, Parcoursup, concours, admissions parallèles, documents à préparer, FAQ et CTA vers le contact.",
+    "answer": "Pour candidater, il faut suivre la procédure adaptée à ton profil : Parcoursup pour le post-bac, concours ou admissions parallèles selon le niveau. La page Admissions résume les étapes et les informations utiles.",
     "route": "admissions.html",
     "cta": "Voir admissions et FAQ",
     "suggestions": [
-      "Comment candidater ?",
-      "Quelles questions fréquentes ?",
-      "Créer une FAQ accordéon"
-    ],
-    "related": [
-      "contact",
-      "faq",
-      "formations"
+      "Quelles formations existent ?",
+      "Où se trouve le campus ?",
+      "Peut-on faire de l'alternance ?"
     ]
   },
+
   "faq": {
     "title": "FAQ",
     "keywords": [
@@ -524,20 +499,16 @@
       "logement",
       "bourse"
     ],
-    "answer": "La FAQ peut répondre aux questions rapides : admission, alternance, rythme, campus, transport, contact, coût de scolarité à vérifier sur les sources officielles. En JS, un accordéon accessible serait parfait.",
+    "answer": "La FAQ répond aux questions fréquentes sur les admissions, le campus, les transports, l'alternance, les formations et la vie étudiante.",
     "route": "admissions.html#faq",
     "cta": "Ouvrir la FAQ",
     "suggestions": [
-      "Ajouter un accordéon FAQ",
-      "Mettre une recherche FAQ",
-      "Relier FAQ au chatbot"
-    ],
-    "related": [
-      "admissions",
-      "contact",
-      "campus"
+      "Comment candidater ?",
+      "Où se trouve le campus ?",
+      "Quelles formations existent ?"
     ]
   },
+
   "campus": {
     "title": "Campus et accès",
     "keywords": [
@@ -553,22 +524,26 @@
       "accès",
       "acces",
       "carte",
-      "localisation"
+      "localisation",
+      "map",
+      "plan du campus",
+      "où se trouve le campus",
+      "ou se trouve le campus",
+      "où est le campus",
+      "ou est le campus",
+      "campus efrei",
+      "adresse campus"
     ],
-    "answer": "Le campus est présenté sur les pages Contact et Vie étudiante. Pour améliorer, créez une carte stylisée sans bibliothèque externe : points d'intérêt, accès transport, espaces de travail, labs et vie associative.",
+    "answer": "Le campus principal se situe à Villejuif. Il regroupe les espaces de cours, de travail, de vie étudiante et les infrastructures utiles aux étudiants.",
     "route": "contact.html#campus",
     "cta": "Voir le campus",
     "suggestions": [
-      "Créer une mini-carte interactive",
-      "Ajouter les transports",
-      "Montrer les espaces du campus"
-    ],
-    "related": [
-      "vie_etudiante",
-      "contact",
-      "faq"
+      "Comment contacter l'école ?",
+      "Quels clubs existent ?",
+      "Comment candidater ?"
     ]
   },
+
   "contact": {
     "title": "Contact",
     "keywords": [
@@ -584,22 +559,19 @@
       "villejuif",
       "formulaire",
       "message",
-      "horaires"
+      "horaires",
+      "comment contacter"
     ],
-    "answer": "Tu peux contacter l'école via le formulaire de la page Contact. Les informations affichées sur le site : 30-32 avenue de la République, 94800 Villejuif, admissions@efrei.fr et +33 1 88 28 90 01.",
+    "answer": "Tu peux contacter l'école via la page Contact. Les informations affichées sont : 30-32 avenue de la République, 94800 Villejuif, admissions@efrei.fr et +33 1 88 28 90 01.",
     "route": "contact.html",
     "cta": "Aller au contact",
     "suggestions": [
-      "Où se situe le campus ?",
+      "Où se trouve le campus ?",
       "Comment candidater ?",
       "Quelles formations existent ?"
-    ],
-    "related": [
-      "campus",
-      "admissions",
-      "formations"
     ]
   },
+
   "quiz": {
     "title": "Quiz d'orientation",
     "keywords": [
@@ -612,22 +584,26 @@
       "profil",
       "jeu",
       "javascript",
-      "recommandation"
+      "recommandation",
+      "recommandations",
+      "résultat",
+      "resultat",
+      "faire le quiz",
+      "lancer le quiz",
+      "quel parcours me correspond",
+      "quel parcours choisir",
+      "orientation informatique"
     ],
-    "answer": "Le quiz aide à découvrir le parcours qui correspond le mieux au profil de l'utilisateur : Bachelor, cycle ingénieur ou spécialisation. Pour l'améliorer, ajoutez un résultat partageable, un lien direct vers la formation et une animation de progression.",
+    "answer": "Le quiz d'orientation aide à trouver le parcours qui correspond le mieux à ton profil : Bachelor, cycle ingénieur ou spécialisation informatique.",
     "route": "quiz.html",
     "cta": "Faire le quiz",
     "suggestions": [
-      "Comment fonctionne le quiz ?",
-      "Quel parcours choisir ?",
-      "Voir les formations"
-    ],
-    "related": [
-      "formations",
-      "bachelor",
-      "cycle_ingenieur"
+      "Quelle formation choisir ?",
+      "Quelle différence entre Bachelor et cycle ingénieur ?",
+      "Quels débouchés après la formation ?"
     ]
   },
+
   "accueil": {
     "title": "Accueil",
     "keywords": [
@@ -642,20 +618,16 @@
       "efrei",
       "informatique"
     ],
-    "answer": "La page d'accueil doit donner immédiatement envie d'explorer : hero visuel, phrase forte, chiffres clés, accès rapides, événements et boutons vers Formations, Admissions et Contact.",
+    "answer": "La page d'accueil présente le département informatique, les formations, les chiffres clés, les actualités et les accès rapides vers les pages principales du site.",
     "route": "accueil.html",
     "cta": "Retour à l'accueil",
     "suggestions": [
-      "Quelles pages visiter ?",
       "Voir les formations",
-      "Faire le quiz"
-    ],
-    "related": [
-      "formations",
-      "vie_etudiante",
-      "quiz"
+      "Faire le quiz",
+      "Comment candidater ?"
     ]
   },
+
   "a_propos": {
     "title": "À propos du projet",
     "keywords": [
@@ -674,19 +646,16 @@
       "maquette",
       "wireframe"
     ],
-    "answer": "Une vraie page À propos est recommandée : membres du groupe, rôle de chacun, technologies utilisées, choix graphiques, arborescence, maquettes et points forts du projet.",
+    "answer": "La page À propos présente le projet, les membres du groupe, la répartition du travail, les choix graphiques, les technologies utilisées et les maquettes.",
     "route": "a-propos.html",
-    "cta": "Créer la page À propos",
+    "cta": "Voir la page À propos",
     "suggestions": [
-      "Que mettre dans À propos ?",
-      "Comment présenter la répartition ?",
-      "Ajouter les maquettes"
-    ],
-    "related": [
-      "accueil",
-      "contact"
+      "Quelles pages visiter ?",
+      "Voir les formations",
+      "Comment contacter l'école ?"
     ]
   },
+
   "accessibilite": {
     "title": "Accessibilité et responsive",
     "keywords": [
@@ -702,19 +671,16 @@
       "seo",
       "performance"
     ],
-    "answer": "Pour améliorer la qualité : navigation clavier, liens actifs, aria-labels, contrastes suffisants, menu mobile, images avec alt utile, validation W3C et animations réduites si l'utilisateur préfère moins de mouvement.",
+    "answer": "Le site doit être responsive, lisible sur mobile, accessible au clavier, avec des contrastes suffisants, des textes alternatifs pour les images et une structure HTML claire.",
     "route": "a-propos.html#qualite",
     "cta": "Voir la qualité du site",
     "suggestions": [
-      "Ajouter un menu mobile",
-      "Valider W3C",
-      "Améliorer les alt images"
-    ],
-    "related": [
-      "a_propos",
-      "accueil"
+      "Quelles pages visiter ?",
+      "Retour à l'accueil",
+      "Voir la page À propos"
     ]
   },
+
   "agenda": {
     "title": "Actualités et événements",
     "keywords": [
@@ -732,23 +698,19 @@
       "atelier",
       "calendrier"
     ],
-    "answer": "Une section Agenda rendrait l'accueil plus vivant : cartes d'événements, filtre par type, dates, lieu, bouton d'inscription fictif et tri automatique en JavaScript depuis un fichier events.json.",
+    "answer": "L'agenda peut présenter les événements importants : journées portes ouvertes, conférences, ateliers, rencontres avec les entreprises ou événements étudiants.",
     "route": "accueil.html#agenda",
     "cta": "Voir l'agenda",
     "suggestions": [
-      "Créer events.json",
-      "Ajouter un filtre événements",
-      "Mettre une JPO fictive"
-    ],
-    "related": [
-      "accueil",
-      "vie_etudiante",
-      "partenariats"
+      "Y a-t-il des journées portes ouvertes ?",
+      "Quels clubs organisent des événements ?",
+      "Comment candidater ?"
     ]
   },
+
   "default": {
     "title": "Je n'ai pas encore la réponse exacte",
-    "answer": "Je n'ai pas bien compris. Essaie avec : formations, Bachelor, cycle ingénieur, cybersécurité, data/IA, vie étudiante, clubs, projets, admissions, contact, quiz ou à propos.",
+    "answer": "Je n'ai pas bien compris. Essaie avec : formations, Bachelor, cycle ingénieur, cybersécurité, data/IA, vie étudiante, clubs, projets, admissions, contact, campus ou quiz.",
     "suggestions": [
       "Parlez-moi des formations",
       "Comment candidater ?",
@@ -757,38 +719,30 @@
       "Faire le quiz"
     ]
   },
+
   "quick_replies": [
     {
       "label": "Formations",
-      "question": "Parlez-moi des formations",
-      "icon": "🎓"
+      "question": "Parlez-moi des formations"
     },
     {
       "label": "Admissions",
-      "question": "Comment candidater ?",
-      "icon": "📝"
-    },
-    {
-      "label": "Vie étudiante",
-      "question": "Quels clubs et projets étudiants ?",
-      "icon": "🚀"
+      "question": "Comment candidater ?"
     },
     {
       "label": "Débouchés",
-      "question": "Quels métiers après la formation ?",
-      "icon": "💼"
+      "question": "Quels métiers après la formation ?"
     },
     {
       "label": "Campus",
-      "question": "Où se trouve le campus ?",
-      "icon": "📍"
+      "question": "Où se trouve le campus ?"
     },
     {
       "label": "Quiz",
-      "question": "Quel parcours me correspond ?",
-      "icon": "🧭"
+      "question": "Faire le quiz"
     }
   ],
+
   "fallbacks": [
     "Je peux t'aider sur les formations, admissions, clubs, projets, débouchés ou le contact.",
     "Tu peux reformuler avec un mot-clé comme Bachelor, IA, cyber, alternance, campus ou quiz.",

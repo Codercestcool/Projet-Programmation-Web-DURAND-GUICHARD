@@ -1,291 +1,442 @@
-// Chatbot v2 - JSON-driven, scoring, localStorage, accessible
-
-document.addEventListener('DOMContentLoaded', async () => {
-    const defaultData = await loadChatbotData();
-    initChatbot(defaultData);
+document.addEventListener("DOMContentLoaded", async () => {
+  const data = await loadChatbotData();
+  initChatbot(data);
 });
 
+let chatbotScrollY = 0;
+
 async function loadChatbotData() {
-    const fallback = {};
-    try {
-        const resp = await fetch('../data/chatbot.json', {cache: 'no-store'});
-        if (!resp.ok) throw new Error('Network response not ok');
-        const data = await resp.json();
-        return data;
-    } catch (e) {
-        try {
-            const local = await fetch('./data/chatbot.json');
-            if (local.ok) return await local.json();
-        } catch (e2) {
-            // ignore
-        }
-        return fallback;
+  try {
+    let response = await fetch("../data/chatbot.json", { cache: "no-store" });
+
+    if (!response.ok) {
+      response = await fetch("./data/chatbot.json", { cache: "no-store" });
     }
+
+    if (!response.ok) {
+      throw new Error("Impossible de charger chatbot.json");
+    }
+
+    return await response.json();
+  } catch (error) {
+    console.error("Erreur chatbot.json :", error);
+
+    return {
+      meta: {
+        welcome:
+          "Bonjour ! Je peux t'aider à explorer les formations, les admissions, le campus, les débouchés ou le quiz."
+      },
+      default: {
+        answer:
+          "Je n'ai pas bien compris. Essaie avec : formations, Bachelor, cycle ingénieur, débouchés, admissions, campus, quiz ou contact.",
+        suggestions: [
+          "Parlez-moi des formations",
+          "Comment candidater ?",
+          "Quels sont les débouchés ?",
+          "Où se trouve le campus ?",
+          "Faire le quiz"
+        ]
+      }
+    };
+  }
 }
 
 function initChatbot(data) {
-    const bubble = document.getElementById('chatbot-bubble');
-    const container = document.getElementById('chatbot-container');
-    const closeBtn = document.getElementById('chatbot-close');
-    const messagesEl = document.getElementById('chatbot-messages');
-    const form = document.getElementById('chatbot-form');
-    const input = document.getElementById('chatbot-input');
-    const quickArea = document.querySelector('.chatbot-quick-buttons');
+  window._efrei_chatbot_data = data || {};
 
-    if (!bubble || !container || !messagesEl || !form || !input) return;
+  const bubble = document.getElementById("chatbot-bubble");
+  const container = document.getElementById("chatbot-container");
+  const closeBtn = document.getElementById("chatbot-close");
+  const messagesEl = document.getElementById("chatbot-messages");
+  const form = document.getElementById("chatbot-form");
+  const input = document.getElementById("chatbot-input");
 
-    // Add aria-labels if not present
-    if (!messagesEl.getAttribute('aria-live')) {
-        messagesEl.setAttribute('aria-live', 'polite');
-        messagesEl.setAttribute('aria-label', 'Messages du chatbot');
-    }
-    if (!input.getAttribute('aria-label')) {
-        input.setAttribute('aria-label', 'Posez votre question à l\'assistant EFREI');
-    }
+  if (!bubble || !container || !messagesEl || !form || !input) {
+    console.warn("Chatbot : un élément HTML est manquant.");
+    return;
+  }
 
-    // Render top-level quick replies (from JSON quick_replies)
-    renderTopQuickReplies(data, quickArea);
+  removeOldQuickButtons();
 
-    // Restore history
-    const history = loadHistory();
-    if (history && history.length) {
-        history.forEach(item => renderMessage(item, messagesEl));
-        messagesEl.scrollTop = messagesEl.scrollHeight;
-    } else if (data.meta && data.meta.welcome) {
-        delayedBotMessage(data.meta.welcome, data, messagesEl);
-    }
+  const history = loadHistory();
 
-    // Add clear button to header
-    const header = container.querySelector('.chatbot-header');
-    if (header && !document.getElementById('chatbot-clear')) {
-        const clear = document.createElement('button');
-        clear.id = 'chatbot-clear';
-        clear.className = 'chatbot-clear-btn';
-        clear.type = 'button';
-        clear.textContent = 'Effacer';
-        clear.title = 'Effacer la conversation';
-        clear.addEventListener('click', () => {
-            if (confirm('Effacer la conversation ?')) {
-                clearHistory();
-                messagesEl.innerHTML = '';
-            }
-        });
-        header.insertBefore(clear, header.firstChild);
-    }
+  if (history.length > 0) {
+    history.forEach((msg) => renderMessage(msg, messagesEl));
+    messagesEl.scrollTop = messagesEl.scrollHeight;
+  } else {
+    const welcome =
+      data.meta?.welcome ||
+      "Bonjour ! Je peux t'aider à explorer les formations, les admissions, le campus, les débouchés ou le quiz.";
 
-    // Toggle
-    bubble.addEventListener('click', () => {
-        container.classList.toggle('active');
-        if (container.classList.contains('active')) input.focus();
+    delayedBotMessage(welcome, data, messagesEl, {
+      suggestions: [
+        "Parlez-moi des formations",
+        "Comment candidater ?",
+        "Quels sont les débouchés ?",
+        "Où se trouve le campus ?",
+        "Faire le quiz"
+      ]
     });
+  }
 
-    closeBtn && closeBtn.addEventListener('click', () => container.classList.remove('active'));
+  addClearButton(container, messagesEl, data);
 
-    // Escape to close
-    document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape') container.classList.remove('active');
+  bubble.addEventListener("click", () => {
+    container.classList.toggle("active");
+
+    if (container.classList.contains("active")) {
+      removeOldQuickButtons();
+      lockPageScroll();
+      input.focus({ preventScroll: true });
+    } else {
+      unlockPageScroll();
+    }
+  });
+
+  if (closeBtn) {
+    closeBtn.addEventListener("click", () => {
+      container.classList.remove("active");
+      unlockPageScroll();
     });
+  }
 
-    // Submit
-    form.addEventListener('submit', (e) => {
-        e.preventDefault();
-        const text = input.value.trim();
-        if (!text) return;
-        handleUserMessage(text, data, messagesEl, input);
-    });
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape") {
+      container.classList.remove("active");
+      unlockPageScroll();
+    }
+  });
 
-    // Quick replies dynamic handler (delegation)
-    quickArea && quickArea.addEventListener('click', (e) => {
-        const btn = e.target.closest('button[data-question]');
-        if (!btn) return;
-        const q = btn.getAttribute('data-question');
-        if (!q) return;
-        handleUserMessage(q, data, messagesEl, input);
-    });
+  form.addEventListener("submit", (event) => {
+    event.preventDefault();
+
+    const text = input.value.trim();
+    if (!text) return;
+
+    handleUserMessage(text, data, messagesEl, input);
+  });
 }
 
-function renderTopQuickReplies(data, area) {
-    if (!area) return;
-    area.innerHTML = '';
-    const top = data.quick_replies || [];
-    top.forEach((item, idx) => {
-        const btn = document.createElement('button');
-        btn.type = 'button';
-        btn.className = 'chatbot-quick-btn';
-        btn.setAttribute('data-question', item.question || item.label || '');
-        btn.setAttribute('aria-label', `Poser la question: ${item.label || item.question || ''}`);
-        btn.textContent = (item.icon ? item.icon + ' ' : '') + (item.label || item.question || '');
-        area.appendChild(btn);
-    });
+function removeOldQuickButtons() {
+  const quickAreas = document.querySelectorAll(
+    ".chatbot-quick-buttons, .quick-buttons, .quick-replies"
+  );
+
+  quickAreas.forEach((area) => {
+    area.remove();
+  });
 }
 
 function handleUserMessage(text, data, messagesEl, inputEl) {
-    const user = {sender: 'user', text: text, ts: Date.now()};
-    appendAndSave(user, messagesEl);
-    inputEl.value = '';
+  window._efrei_last_question = text;
+  removeOldQuickButtons();
 
-    const best = findBestMatch(text, data);
+  const userMessage = {
+    sender: "user",
+    text,
+    ts: Date.now()
+  };
 
-    if (!best) {
-        // fallback
-        const fallbacks = data.fallbacks || (data.default && data.default.suggestions) || [];
-        delayedBotMessage((data.default && data.default.answer) || (fallbacks[0] || 'Désolé, je n’ai pas compris.'), data, messagesEl);
-        return;
-    }
+  appendAndSave(userMessage, messagesEl);
 
-    // Build bot content
-    let botText = best.answer || '';
-    delayedBotMessage(botText, data, messagesEl, best);
+  if (inputEl) {
+    inputEl.value = "";
+  }
+
+  const match = findBestMatch(text, data);
+
+  if (!match) {
+    const fallbackText =
+      data.default?.answer ||
+      "Je n'ai pas bien compris. Essaie avec : formations, admissions, campus, débouchés ou quiz.";
+
+    delayedBotMessage(fallbackText, data, messagesEl, data.default || null);
+    return;
+  }
+
+  delayedBotMessage(match.answer, data, messagesEl, match);
 }
 
 function findBestMatch(input, data) {
-    if (!input) return null;
-    const clean = normalizeText(input);
-    const tokens = clean.split(/\s+/).filter(Boolean);
-    const keys = Object.keys(data).filter(k => !['meta','quick_replies','fallbacks','default'].includes(k));
-    let best = null;
-    let bestScore = 0;
+  if (!input || !data) return null;
 
-    for (const key of keys) {
-        const entry = data[key];
-        const keywords = (entry && entry.keywords) || [];
-        let score = 0;
-        for (const kw of keywords) {
-            const k = normalizeText(kw);
-            if (!k) continue;
-            // exact phrase
-            if (clean.includes(k)) {
-                const weight = Math.max(1, k.split(/\s+/).length);
-                score += 2 * weight;
-            } else {
-                // partial token matches
-                const kwTokens = k.split(/\s+/).filter(Boolean);
-                for (const t of kwTokens) {
-                    if (tokens.includes(t)) score += 1;
-                }
-            }
+  const cleanInput = normalizeText(input);
+  const inputTokens = cleanInput.split(" ").filter(Boolean);
+
+  const ignoredKeys = ["meta", "quick_replies", "fallbacks", "default"];
+  const keys = Object.keys(data).filter((key) => !ignoredKeys.includes(key));
+
+  let bestEntry = null;
+  let bestScore = 0;
+
+  keys.forEach((key) => {
+    const entry = data[key];
+
+    if (!entry || !Array.isArray(entry.keywords)) return;
+
+    let score = 0;
+
+    entry.keywords.forEach((keyword) => {
+      const cleanKeyword = normalizeText(keyword);
+      if (!cleanKeyword) return;
+
+      const keywordTokens = cleanKeyword.split(" ").filter(Boolean);
+
+      if (cleanInput.includes(cleanKeyword)) {
+        score += keywordTokens.length * 6;
+      }
+
+      keywordTokens.forEach((token) => {
+        if (token.length > 2 && inputTokens.includes(token)) {
+          score += 1;
         }
-        if (score > bestScore) {
-            bestScore = score;
-            best = entry;
-        }
+      });
+    });
+
+    if (score > bestScore) {
+      bestScore = score;
+      bestEntry = entry;
     }
+  });
 
-    // require minimal score
-    if (bestScore <= 0) return null;
-    return best;
+  return bestScore > 0 ? bestEntry : null;
 }
 
-function normalizeText(s) {
-    return s.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/[^a-z0-9\s-]/g, ' ').replace(/\s+/g, ' ').trim();
+function normalizeText(text) {
+  return text
+    .toLowerCase()
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .replace(/[^a-z0-9\s-]/g, " ")
+    .replace(/\s+/g, " ")
+    .trim();
 }
 
 function delayedBotMessage(text, data, messagesEl, entry) {
-    showTypingIndicator(messagesEl);
-    setTimeout(() => {
-        removeTypingIndicator(messagesEl);
-        const bot = {sender: 'bot', text: text, ts: Date.now()};
-        appendAndSave(bot, messagesEl, entry);
-        // after message, if entry has suggestions or route/cta, render them
-        if (entry) {
-            if (entry.suggestions && entry.suggestions.length) renderSuggestionButtons(entry.suggestions, messagesEl);
-            if (entry.route || entry.cta) renderRouteButton(entry, messagesEl);
-        } else if (data && data.default && data.default.suggestions) {
-            renderSuggestionButtons(data.default.suggestions, messagesEl);
-        }
-    }, 400);
+  showTypingIndicator(messagesEl);
+
+  setTimeout(() => {
+    removeTypingIndicator(messagesEl);
+
+    const botMessage = {
+      sender: "bot",
+      text,
+      ts: Date.now()
+    };
+
+    appendAndSave(botMessage, messagesEl);
+
+    if (entry) {
+      if (entry.suggestions && entry.suggestions.length > 0) {
+        renderSuggestionButtons(entry.suggestions, messagesEl, window._efrei_last_question || "");
+      }
+
+      if (entry.route && entry.cta) {
+        renderRouteButton(entry, messagesEl);
+      }
+    }
+
+    messagesEl.scrollTop = messagesEl.scrollHeight;
+  }, 350);
 }
 
-function showTypingIndicator(container) {
-    const el = document.createElement('div');
-    el.className = 'chatbot-message bot-message typing';
-    el.setAttribute('aria-live', 'polite');
-    el.textContent = 'Assistant écrit...';
-    el.dataset.typing = '1';
-    container.appendChild(el);
-    container.scrollTop = container.scrollHeight;
+function renderMessage(item, container) {
+  const message = document.createElement("div");
+
+  message.className =
+    "chatbot-message " +
+    (item.sender === "user" ? "user-message" : "bot-message");
+
+  message.textContent = item.text || "";
+
+  container.appendChild(message);
+  container.scrollTop = container.scrollHeight;
 }
 
-function removeTypingIndicator(container) {
-    const el = container.querySelector('[data-typing="1"]');
-    if (el) el.remove();
+function appendAndSave(item, container) {
+  renderMessage(item, container);
+  saveToHistory(item);
 }
 
-function renderSuggestionButtons(suggestions, container) {
-    if (!suggestions || !suggestions.length) return;
-    const wrap = document.createElement('div');
-    wrap.className = 'chatbot-suggestions';
-    suggestions.slice(0,5).forEach(s => {
-        const b = document.createElement('button');
-        b.type = 'button';
-        b.className = 'chatbot-suggestion-btn';
-        b.setAttribute('data-question', s);
-        b.textContent = s;
-        b.addEventListener('click', () => {
-            const input = document.getElementById('chatbot-input');
-            handleUserMessage(s, window._efrei_chatbot_data || {}, document.getElementById('chatbot-messages'), input);
-        });
-        wrap.appendChild(b);
+function renderSuggestionButtons(suggestions, container, currentQuestion = "") {
+  const wrapper = document.createElement("div");
+  wrapper.className = "chatbot-suggestions";
+
+  const cleanCurrentQuestion = normalizeText(currentQuestion);
+
+  const filteredSuggestions = suggestions
+    .filter((suggestion) => {
+      const cleanSuggestion = normalizeText(suggestion);
+
+      // Enlève la suggestion si elle est identique à la question posée
+      return cleanSuggestion !== cleanCurrentQuestion;
+    })
+    .slice(0, 5);
+
+  if (filteredSuggestions.length === 0) {
+    return;
+  }
+
+  filteredSuggestions.forEach((suggestion) => {
+    const button = document.createElement("button");
+
+    button.type = "button";
+    button.className = "chatbot-suggestion-btn";
+    button.textContent = suggestion;
+    button.setAttribute("data-question", suggestion);
+
+    button.addEventListener("click", () => {
+      const input = document.getElementById("chatbot-input");
+      const messages = document.getElementById("chatbot-messages");
+      const data = window._efrei_chatbot_data || {};
+
+      if (!messages) return;
+
+      document.querySelectorAll(".chatbot-suggestions").forEach((el) => {
+        el.remove();
+      });
+
+      handleUserMessage(suggestion, data, messages, input);
     });
-    container.appendChild(wrap);
-    container.scrollTop = container.scrollHeight;
+
+    wrapper.appendChild(button);
+  });
+
+  container.appendChild(wrapper);
+  container.scrollTop = container.scrollHeight;
 }
 
 function renderRouteButton(entry, container) {
-    const div = document.createElement('div');
-    div.className = 'chatbot-route';
-    if (entry.route || entry.cta) {
-        const a = document.createElement('a');
-        a.href = entry.route || '#';
-        a.rel = 'noopener noreferrer';
-        a.textContent = entry.cta || 'Voir';
-        a.className = 'chatbot-cta';
-        div.appendChild(a);
-        container.appendChild(div);
-        container.scrollTop = container.scrollHeight;
-    }
+  if (!entry.route || !entry.cta) return;
+
+  const wrapper = document.createElement("div");
+  wrapper.className = "chatbot-route";
+
+  const link = document.createElement("a");
+  link.className = "chatbot-cta";
+  link.href = entry.route;
+  link.textContent = entry.cta;
+
+  wrapper.appendChild(link);
+  container.appendChild(wrapper);
+  container.scrollTop = container.scrollHeight;
 }
 
-function appendAndSave(item, container, entryMeta) {
-    renderMessage(item, container, entryMeta);
-    saveToHistory(item);
-    container.scrollTop = container.scrollHeight;
+function showTypingIndicator(container) {
+  const typing = document.createElement("div");
+
+  typing.className = "chatbot-message bot-message typing";
+  typing.dataset.typing = "true";
+  typing.textContent = "Assistant écrit...";
+
+  container.appendChild(typing);
+  container.scrollTop = container.scrollHeight;
 }
 
-function renderMessage(item, container, entryMeta) {
-    const div = document.createElement('div');
-    div.className = 'chatbot-message ' + (item.sender === 'user' ? 'user-message' : 'bot-message');
-    div.setAttribute('data-ts', item.ts || Date.now());
-    const textNode = document.createTextNode(item.text || '');
-    div.appendChild(textNode);
-    container.appendChild(div);
+function removeTypingIndicator(container) {
+  const typing = container.querySelector("[data-typing='true']");
+  if (typing) typing.remove();
 }
 
-// LocalStorage history helpers
-const HISTORY_KEY = 'efrei_chat_history_v2';
+function addClearButton(container, messagesEl, data) {
+  const header = container.querySelector(".chatbot-header");
+
+  if (!header || document.getElementById("chatbot-clear")) return;
+
+  const clearButton = document.createElement("button");
+
+  clearButton.id = "chatbot-clear";
+  clearButton.className = "chatbot-clear-btn";
+  clearButton.type = "button";
+  clearButton.textContent = "Effacer";
+
+  clearButton.addEventListener("click", () => {
+    clearHistory();
+    messagesEl.innerHTML = "";
+    removeOldQuickButtons();
+
+    const welcome =
+      data.meta?.welcome ||
+      "Conversation effacée. Pose-moi une question sur l’EFREI.";
+
+    delayedBotMessage(welcome, data, messagesEl, {
+      suggestions: [
+        "Parlez-moi des formations",
+        "Comment candidater ?",
+        "Quels sont les débouchés ?",
+        "Où se trouve le campus ?",
+        "Faire le quiz"
+      ]
+    });
+  });
+
+  header.insertBefore(clearButton, header.firstChild);
+}
+
+function lockPageScroll() {
+  const body = document.body;
+
+  if (body.classList.contains("chatbot-open")) return;
+
+  chatbotScrollY = window.scrollY || window.pageYOffset || 0;
+
+  body.classList.add("chatbot-open");
+  body.style.position = "fixed";
+  body.style.top = `-${chatbotScrollY}px`;
+  body.style.left = "0";
+  body.style.right = "0";
+  body.style.width = "100%";
+}
+
+function unlockPageScroll() {
+  const body = document.body;
+
+  if (!body.classList.contains("chatbot-open")) return;
+
+  body.classList.remove("chatbot-open");
+  body.style.position = "";
+  body.style.top = "";
+  body.style.left = "";
+  body.style.right = "";
+  body.style.width = "";
+
+  window.scrollTo(0, chatbotScrollY);
+}
+
+const HISTORY_KEY = "efrei_chat_history_v2";
+
 function loadHistory() {
-    try {
-        const raw = localStorage.getItem(HISTORY_KEY);
-        if (!raw) return [];
-        const parsed = JSON.parse(raw);
-        return Array.isArray(parsed) ? parsed : [];
-    } catch (e) { return []; }
+  try {
+    const raw = localStorage.getItem(HISTORY_KEY);
+    if (!raw) return [];
+
+    const parsed = JSON.parse(raw);
+    return Array.isArray(parsed) ? parsed : [];
+  } catch (error) {
+    return [];
+  }
 }
 
 function saveToHistory(item) {
-    try {
-        const cur = loadHistory();
-        cur.push(item);
-        // limit size
-        if (cur.length > 200) cur.splice(0, cur.length - 200);
-        localStorage.setItem(HISTORY_KEY, JSON.stringify(cur));
-    } catch (e) { /* ignore */ }
+  try {
+    const history = loadHistory();
+
+    history.push(item);
+
+    if (history.length > 120) {
+      history.splice(0, history.length - 120);
+    }
+
+    localStorage.setItem(HISTORY_KEY, JSON.stringify(history));
+  } catch (error) {
+    console.warn("Impossible de sauvegarder l’historique du chatbot.");
+  }
 }
 
 function clearHistory() {
-    try { localStorage.removeItem(HISTORY_KEY); } catch (e) {}
+  try {
+    localStorage.removeItem(HISTORY_KEY);
+  } catch (error) {
+    console.warn("Impossible d’effacer l’historique du chatbot.");
+  }
 }
-
-// Expose helper for suggestions to access data
-window._efrei_chatbot_data = window._efrei_chatbot_data || {};
-
