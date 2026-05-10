@@ -1,7 +1,18 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+
+/* ===== Brand tokens and global reset ===== */
+:root {
+    --efrei-blue: #0A316C;
+    --efrei-blue-dark: #051438;
+    --efrei-cyan: #81ECEC;
+    --efrei-yellow: #FDCB6E;
+    --efrei-white: #ffffff;
+    --efrei-text-soft: #d6e7ff;
+}
+
 *, *::before, *::after {
     box-sizing: border-box;
 }
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
 
 body {
     font-family: 'Poppins', Arial, sans-serif;
@@ -14,6 +25,8 @@ body {
 html {
     overflow-x: hidden;
 }
+
+/* ===== Home page sections: stats and quick links ===== */
 .accueil-page .hero-section {
     padding-top: 120px;
 }
@@ -235,6 +248,7 @@ html {
     font-size: 1.05em;
     line-height: 1.5;
 }
+/* ===== Home hero and primary navigation ===== */
 .hero-section {
     position: relative;
     display: flex;
@@ -538,6 +552,8 @@ main h1 {
 .cta-button:hover {
     background-color: #062147;
 }
+
+/* ===== Shared footer ===== */
 footer {
     background-color: #051438;
     color: #ffffff;
@@ -749,6 +765,7 @@ footer {
     margin: 0;
 }
 
+/* ===== Small decorative easter egg marks ===== */
 .easteregg-mark {
     display: inline-block;
     width: 0.7em;
@@ -759,6 +776,7 @@ footer {
     margin-left: 2px;
 }
 
+/* ===== Fixed headers on inner pages ===== */
 .formations-page .site-header,
 .quiz-page .site-header,
 .contact-page .site-header,
@@ -779,7 +797,7 @@ footer {
     z-index: 30;
 }
 
-/* About page specific styles */
+/* ===== About page ===== */
 .about-project-page .about-hero {
     background: linear-gradient(135deg, rgba(10,49,108,0.95) 0%, rgba(10,49,108,0.85) 60%);
     color: #ffffff;
@@ -846,7 +864,7 @@ footer {
     border-radius: 10px;
 }
 
-.choices, .technologies, .quality-grid, .mockup-preview-grid {
+.choices, .technologies, .quality-grid {
     max-width: 1100px;
     margin: 20px auto;
     padding: 0 20px 30px;
@@ -854,16 +872,13 @@ footer {
 .quality-grid ul { list-style: none; padding:0; display:grid; grid-template-columns: repeat(auto-fit,minmax(200px,1fr)); gap:12px; }
 .quality-grid ul li { background: rgba(255,255,255,0.03); padding:12px; border-radius:8px; }
 
-.mockups { display:grid; grid-template-columns: repeat(auto-fit,minmax(220px,1fr)); gap:16px; }
-.mockup-card { background: rgba(255,255,255,0.03); padding:16px; border-radius:12px; }
-
 @media (max-width: 640px) {
     .about-project-page .about-hero { padding: 40px 12px; clip-path:none; }
     .header-nav { gap: 12px; }
     .social-links a { width: auto; height: auto; padding: 6px 10px; border-radius: 6px; }
 }
 
-/* Partners page styles */
+/* ===== Partners page ===== */
 .partners-page .partners-hero {
     background: linear-gradient(135deg, rgba(10,49,108,0.95) 0%, rgba(10,49,108,0.8) 60%);
     color: #fff;
@@ -896,7 +911,7 @@ footer {
     .career-table { min-width:640px; }
 }
 
-/* Mobile navigation styles */
+/* ===== Mobile navigation ===== */
 .nav-toggle {
     display: inline-flex;
     background: transparent;
@@ -1417,11 +1432,27 @@ body.nav-open-active .hero-section {
     letter-spacing: 0.08em;
 }
 
+/* Charte: content lists use triangular bullets instead of classic dots. */
 .formation-card ul {
     margin: 0;
-    padding-left: 20px;
+    padding-left: 0;
+    list-style: none;
     color: #ffffff;
     line-height: 1.7;
+}
+
+.formation-card ul li {
+    position: relative;
+    padding-left: 22px;
+}
+
+.formation-card ul li::before {
+    content: '▶';
+    position: absolute;
+    left: 0;
+    color: #ffffff;
+    font-size: 0.78em;
+    line-height: 2.1;
 }
 
 .formation-link {
@@ -1576,6 +1607,7 @@ body.nav-open-active .hero-section {
     }
 }
 
+/* ===== Quiz page ===== */
 .quiz-content {
     max-width: 1100px;
     width: 100%;
@@ -1779,9 +1811,24 @@ body.nav-open-active .hero-section {
 
 .quiz-result ul {
     margin: 18px 0 0;
-    padding-left: 20px;
+    padding-left: 0;
+    list-style: none;
     color: #ffffff;
     line-height: 1.8;
+}
+
+.quiz-result li {
+    position: relative;
+    padding-left: 22px;
+}
+
+.quiz-result li::before {
+    content: '▶';
+    position: absolute;
+    left: 0;
+    color: #ffffff;
+    font-size: 0.72em;
+    line-height: 2.5;
 }
 
 @media (max-width: 900px) {
@@ -1843,7 +1890,7 @@ body.nav-open-active .hero-section {
     }
 }
 
-/* ======================== CONTACT PAGE ======================== */
+/* ======================== CONTACT / TEAM / STUDENT LIFE PAGES ======================== */
 .contact-content,
 .team-content,
 .student-life-content {
@@ -2161,6 +2208,172 @@ body.nav-open-active .hero-section {
     border-radius: 4px;
 }
 
+/* ===== Public professor profiles ===== */
+.professors-section {
+    margin: 56px 0;
+}
+
+.professors-heading {
+    max-width: 980px;
+    margin-bottom: 28px;
+}
+
+.professors-heading h2 {
+    margin: 0 0 14px;
+    color: #ffffff;
+    font-size: 2rem;
+    line-height: 1.2;
+}
+
+.professors-heading p {
+    margin: 0;
+    color: #d6e7ff;
+    font-size: 1.02rem;
+    line-height: 1.7;
+}
+
+.professors-heading .section-subtitle {
+    margin-bottom: 12px;
+}
+
+.professors-heading .professors-note {
+    margin-top: 10px;
+    color: #81ECEC;
+    font-weight: 700;
+}
+
+.professors-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 20px;
+}
+
+.professor-card {
+    display: flex;
+    flex-direction: column;
+    min-height: 100%;
+    padding: 20px;
+    background: linear-gradient(145deg, rgba(129, 236, 236, 0.10), rgba(255, 255, 255, 0.035));
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    border-radius: 14px;
+    color: #ffffff;
+    transition: transform 0.25s ease, border-color 0.25s ease, background-color 0.25s ease;
+}
+
+.professor-card:hover {
+    transform: translateY(-5px);
+    border-color: rgba(129, 236, 236, 0.7);
+    background-color: rgba(255, 255, 255, 0.06);
+}
+
+.professor-card-header {
+    display: flex;
+    gap: 14px;
+    align-items: flex-start;
+    margin-bottom: 14px;
+}
+
+.professor-initials {
+    display: inline-flex;
+    flex: 0 0 48px;
+    width: 48px;
+    height: 48px;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #81ECEC, #0A316C);
+    color: #ffffff;
+    font-size: 0.95rem;
+    font-weight: 800;
+    border: 1px solid rgba(255, 255, 255, 0.28);
+}
+
+.professor-card h3 {
+    margin: 0 0 8px;
+    color: #ffffff;
+    font-size: 1.18rem;
+    line-height: 1.25;
+}
+
+.professor-role {
+    margin: 0;
+    color: #81ECEC;
+    font-size: 0.82rem;
+    font-weight: 700;
+    line-height: 1.45;
+}
+
+.professor-description {
+    margin: 0 0 14px;
+    color: #d6e7ff;
+    font-size: 0.94rem;
+    line-height: 1.65;
+}
+
+.professor-domains {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: 0 0 18px;
+    padding: 0;
+    list-style: none;
+}
+
+.professor-domains li {
+    padding: 6px 10px;
+    border: 1px solid rgba(129, 236, 236, 0.42);
+    border-radius: 999px;
+    background: rgba(129, 236, 236, 0.10);
+    color: #ffffff;
+    font-size: 0.78rem;
+    font-weight: 700;
+    line-height: 1.25;
+}
+
+.professor-source {
+    display: inline-flex;
+    align-items: center;
+    width: fit-content;
+    margin-top: auto;
+    color: #0A316C;
+    background: #81ECEC;
+    text-decoration: none;
+    border-radius: 999px;
+    padding: 9px 13px;
+    font-size: 0.82rem;
+    font-weight: 800;
+    transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+.professor-source:hover {
+    background: #a2f6f6;
+    transform: translateY(-2px);
+}
+
+@media (max-width: 900px) {
+    .professors-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 600px) {
+    .professors-section {
+        margin: 40px 0;
+    }
+
+    .professors-heading h2 {
+        font-size: 1.55rem;
+    }
+
+    .professors-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .professor-card {
+        padding: 18px;
+    }
+}
+
 .team-values {
     margin-top: 50px;
 }
@@ -2218,10 +2431,20 @@ body.nav-open-active .hero-section {
 }
 
 .club-category li {
+    position: relative;
     color: #d6e7ff;
-    padding: 8px 0;
+    padding: 8px 0 8px 22px;
     border-bottom: 1px solid rgba(255, 255, 255, 0.08);
     font-size: 0.95rem;
+}
+
+.club-category li::before {
+    content: '▶';
+    position: absolute;
+    left: 0;
+    color: #ffffff;
+    font-size: 0.72em;
+    line-height: 2.4;
 }
 
 .club-category li a {
@@ -2377,6 +2600,7 @@ body.nav-open-active .hero-section {
     }
 }
 
+/* ===== Chatbot ===== */
 .chatbot-open {
     overflow: hidden;
     overscroll-behavior: none;
@@ -2717,4 +2941,3 @@ body.nav-open-active .hero-section {
     transform: translateY(-2px);
 }
 
-@import url('./_append.css');

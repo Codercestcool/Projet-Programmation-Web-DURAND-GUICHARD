@@ -1,17 +1,17 @@
-// Formations filter
+// Filtrage des formations par catégorie
 
 document.addEventListener('DOMContentLoaded', () => {
     const cards = document.querySelectorAll('.formation-card');
     if (!cards.length) return;
 
-    // Get unique categories from data-category attributes
+    // Lister les catégories présentes dans les cartes
     const categories = new Set();
     cards.forEach(card => {
         const cat = card.getAttribute('data-category');
         if (cat) categories.add(cat);
     });
 
-    // Create filter container and buttons
+    // Créer les boutons de filtre dans la zone prévue
     const filterContainer = document.querySelector('.formations-filters');
     if (!filterContainer) return;
 
@@ -37,17 +37,17 @@ document.addEventListener('DOMContentLoaded', () => {
         filterContainer.appendChild(btn);
     });
 
-    // Add click handlers
+    // Gérer les clics sur les filtres
     const filterBtns = filterContainer.querySelectorAll('.filter-btn');
     filterBtns.forEach(btn => {
         btn.addEventListener('click', () => {
-            // Remove active class from all buttons
+            // Réinitialiser l'état actif de tous les boutons
             filterBtns.forEach(b => b.classList.remove('active'));
             btn.classList.add('active');
 
             const filter = btn.getAttribute('data-filter');
 
-            // Show/hide cards
+            // Afficher uniquement les cartes correspondant au filtre
             cards.forEach(card => {
                 if (filter === 'all') {
                     card.style.display = '';

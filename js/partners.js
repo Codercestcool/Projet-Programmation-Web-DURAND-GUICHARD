@@ -30,7 +30,7 @@ document.addEventListener('DOMContentLoaded', function () {
         });
 
     } catch (err) {
-        // Fail silently — script must not break the page
+        // En cas d'erreur, laisser la page fonctionner normalement
         console.error('partners.js error', err);
     }
 });

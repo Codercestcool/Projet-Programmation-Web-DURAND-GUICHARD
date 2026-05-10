@@ -50,7 +50,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 toggle.setAttribute('aria-expanded', String(!expanded));
                 if (!expanded) {
                     openMenu();
-                    // focus first link
+                    // Donner le focus au premier lien du menu
                     const firstLink = nav.querySelector('a[href]');
                     firstLink && firstLink.focus();
                 } else {
@@ -58,7 +58,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 }
             });
 
-            // Ensure proper display on resize (CSS media queries handle it, but JS ensures toggle works)
+            // Forcer l'affichage du bouton mobile au redimensionnement
             const updateToggleVisibility = () => {
                 try {
                     if (window.innerWidth <= 900) {
@@ -73,7 +73,7 @@ document.addEventListener('DOMContentLoaded', function () {
             updateToggleVisibility();
             window.addEventListener('resize', updateToggleVisibility);
 
-            // Close when clicking a nav link
+            // Fermer le menu lors d'un clic sur un lien
             nav.addEventListener('click', (e) => {
                 const target = e.target;
                 if (target.tagName === 'A' && nav.classList.contains('nav-open')) {
@@ -81,7 +81,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 }
             });
 
-            // Close on Escape
+            // Fermer le menu avec la touche Échap
             document.addEventListener('keydown', (e) => {
                 if (e.key === 'Escape' && nav.classList.contains('nav-open')) {
                     closeMenu();
@@ -90,7 +90,7 @@ document.addEventListener('DOMContentLoaded', function () {
             });
         }
 
-        // Active link detection
+        // Mettre en évidence le lien de navigation actif
         const links = document.querySelectorAll('.header-nav a[href]');
         if (links.length) {
             const current = window.location.pathname.split('/').pop();

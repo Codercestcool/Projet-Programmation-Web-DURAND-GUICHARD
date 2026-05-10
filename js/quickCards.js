@@ -6,6 +6,10 @@ document.addEventListener('DOMContentLoaded', function() {
         let hoverTimeout;
         const overlay = card.querySelector('.quick-card-overlay');
         const overlayText = card.getAttribute('data-overlay-text');
+
+        if (!overlay || !overlayText) {
+            return;
+        }
         
         card.addEventListener('mouseenter', function() {
             hoverTimeout = setTimeout(() => {

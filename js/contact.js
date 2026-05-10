@@ -35,26 +35,26 @@ document.addEventListener('DOMContentLoaded', function () {
 
         function validate() {
             let ok = true;
-            // Name
+            // Validation du nom
             if (!fields.name.value || fields.name.value.trim().length < 2) {
                 setError(fields.name, 'Veuillez saisir au moins 2 caractères pour le nom.');
                 ok = false;
             } else clearError(fields.name);
 
-            // Email
+            // Validation de l'adresse email
             const emailRe = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
             if (!fields.email.value || !emailRe.test(fields.email.value.trim())) {
                 setError(fields.email, 'Veuillez saisir une adresse email valide.');
                 ok = false;
             } else clearError(fields.email);
 
-            // Subject
+            // Validation du sujet
             if (!fields.subject.value || fields.subject.value.trim().length === 0) {
                 setError(fields.subject, 'Veuillez indiquer un sujet.');
                 ok = false;
             } else clearError(fields.subject);
 
-            // Message
+            // Validation du message
             if (!fields.message.value || fields.message.value.trim().length < 20) {
                 setError(fields.message, 'Le message doit contenir au moins 20 caractères.');
                 ok = false;
@@ -78,7 +78,7 @@ document.addEventListener('DOMContentLoaded', function () {
         form.addEventListener('submit', function (e) {
             e.preventDefault();
             if (!validate()) return;
-            // No real sending — show success and reset safely
+            // Aucun envoi réel : afficher la confirmation puis réinitialiser le formulaire
             showSuccess();
             form.reset();
             Object.values(fields).forEach(clearError);

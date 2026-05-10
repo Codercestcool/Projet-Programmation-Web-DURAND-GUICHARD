@@ -1,10 +1,10 @@
-// Campus hotspots - interactive campus map overlay
+// Points d'intérêt interactifs sur la carte du campus
 
 document.addEventListener('DOMContentLoaded', () => {
     const campusSection = document.querySelector('.campus-hotspots');
     if (!campusSection) return;
 
-    // Define hotspot positions (percentage-based, relative to image)
+    // Définir les positions des points d'intérêt en pourcentage de l'image
     const hotspots = [
         {
             x: 15,
@@ -43,7 +43,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     ];
 
-    // Create hotspot overlay
+    // Créer la couche superposée qui contiendra les points d'intérêt
     const overlay = document.createElement('div');
     overlay.className = 'campus-overlay';
     overlay.setAttribute('role', 'presentation');
@@ -56,7 +56,7 @@ document.addEventListener('DOMContentLoaded', () => {
         hotspot.setAttribute('aria-label', `${spot.title}: ${spot.description}`);
         hotspot.innerHTML = `<span class="hotspot-dot">${spot.icon}</span>`;
 
-        // Tooltip
+        // Créer l'infobulle associée au point
         const tooltip = document.createElement('div');
         tooltip.className = 'hotspot-tooltip';
         tooltip.innerHTML = `
@@ -73,7 +73,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         hotspot.addEventListener('click', (e) => {
             e.preventDefault();
-            // Toggle active state
+            // Basculer l'état actif du point sélectionné
             document.querySelectorAll('.hotspot-wrapper').forEach(w => {
                 w.classList.remove('active');
             });
@@ -90,7 +90,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
 
-        // Keyboard navigation
+        // Permettre la fermeture au clavier avec Échap
         hotspot.addEventListener('keydown', (e) => {
             if (e.key === 'Escape') {
                 wrapper.classList.remove('active');
@@ -101,7 +101,7 @@ document.addEventListener('DOMContentLoaded', () => {
         overlay.appendChild(wrapper);
     });
 
-    // Insert overlay into the map container instead of the section
+    // Insérer la couche dans le conteneur de la carte
     const mapContainer = campusSection.querySelector('.campus-map-container');
     if (mapContainer) {
         mapContainer.appendChild(overlay);

@@ -268,7 +268,7 @@ function renderSuggestionButtons(suggestions, container, currentQuestion = "") {
     .filter((suggestion) => {
       const cleanSuggestion = normalizeText(suggestion);
 
-      // Enlève la suggestion si elle est identique à la question posée
+      // Éviter d'afficher une suggestion déjà identique à la question en cours
       return cleanSuggestion !== cleanCurrentQuestion;
     })
     .slice(0, 5);
